@@ -1,0 +1,108 @@
+/* 스타일을 변수처럼 사용할 수 있도록 해줌 
+text-color를 root에서 변경하면 모두 변경되니까 편리! */
+:root {
+    --text-color: #f0f4f5;
+    --background-color: gray;
+    --accent-color: yellow;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Code Pro', monospace;
+}
+
+li{
+    /* list에 생기는 땡그라미 삭제  */
+    list-style: none;    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 8px 12px;
+}
+
+.nav__logo {
+    font-size: 24px;
+}
+
+.nav__menu {
+    display: flex;    
+    /* list로 생기는 padding 삭제  */
+    padding-left: 0;    
+}
+
+.nav__menu li {
+    padding: 8px 8px
+}
+
+.nav__menu li:hover {
+    color: var(--text-color);
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+.nav__icons {
+    display: flex;   
+    padding-left: 0;    
+    margin: 0;
+}
+
+.nav__icons li {
+    padding: 0px 8px 0px 8px;    
+}
+
+.nav__bars {
+    position: fixed;
+    /* 오른쪽에서 32px 떨어진 곳 */
+    right: 32px;
+    font-size: 24px;
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {        
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .nav__logo {
+        width: 100%;        
+    }
+
+    .nav__menu {                
+        display: none;
+        flex-direction: column;
+        align-content: center;
+        width: 100%;                       
+    }
+
+    .nav__menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .nav__icons {
+        display: none;
+        justify-content: center;
+        width: 100%;        
+    }
+
+    .nav__bars {
+        display: block;
+    }
+
+    .nav__menu.active,
+    .nav__icons.active {
+        display: flex;        
+    }
+}
