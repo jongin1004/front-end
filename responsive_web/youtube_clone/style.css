@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #6d6d6d;
+}
+
+.nav__logo {
+    padding: 2px 12px;
+}
+
+.nav__menu {
+    display: flex;
+}
+
+.nav__menu li {    
+    list-style: none;
+    padding: 2px 12px;
+}
+
+.video {
+    display: block;
+    background-color: yellow;
+    width: 500px;
+    height: 300px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.video__menu {
+    display: flex;    
+    justify-content: space-around;    
+    padding: 8px;
+}
+
+.video__menu div {
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.video__menu div:hover {
+    background-color: yellow;
+    border-radius: 4px;
+}
