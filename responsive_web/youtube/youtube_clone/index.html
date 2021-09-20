@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1877f468c8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="header__logo">
+            <i class="fab fa-youtube"></i>
+            <span class="logo__title">YOUTUBE</span>
+        </div>
+        <div class="header__icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
+
+    <!-- video -->
+    <section class="video__container">
+        <video controls class="video">            
+            <source src="./media/ToDoList.mp4" type="video/mp4">                    
+        </video>
+    </section>
+
+    <!-- video info and video list-->
+    <div class="videoInfoAndList">
+        <!-- video info -->
+        <section class="video__info">
+            <div class="info__metadata">
+                <ul class="metadata__hashtag">
+                    <li>#CloneCoding</li>
+                    <li>#YOUTUBE</li>
+                    <li>#Flexbox</li>
+                </ul>
+                <div class="metadata__discription">
+                    <div class="discription">Clone Coding | 유튜브 모바일 웹사이트 반응형으로 제작하기 HTML와 CSS의 Flexbox을 이용해서 완벽하게 제작하기!</div>
+                    <button class="moreBtn"><i class="fas fa-caret-down"></i></button>
+                </div>
+                <div class="metadata__view"><span>100 view, 5분 전</span></div>
+            </div>
+            <div class="info__menu">
+                <div class="menu">
+                    <div class="menu__icon"><i class="fas fa-thumbs-up"></i></div>
+                    <div class="menu__title">like</div>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon"><i class="fas fa-thumbs-down"></i></div>
+                    <div class="menu__title">dislike</div>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon"><i class="fas fa-plus"></i></div>
+                    <div class="menu__title">save</div>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon"><i class="fas fa-paper-plane"></i></div>
+                    <div class="menu__title">share</div>
+                </div>
+                <div class="menu">
+                    <div class="menu__icon"><i class="fas fa-flag"></i></div>
+                    <div class="menu__title">report</div>
+                </div>
+            </div>
+            <div class="info__youtuber">
+                <div class="youtuber__avatar"><img src="./media/avatar.jpg" alt=""></div>
+                <div class="youtuber__info">
+                    <div class="info__name">Jongin</div>
+                    <div class="info__subscribers">1,000,000</div>
+                </div>                
+                <button class="youtuber__subscribe">subscribe</button>
+            </div>
+        </section>
+        
+        <!-- video list -->
+        <section class="video__list">
+            <span class="title">Up next</span>
+
+            <div class="nextList">
+                <div class="nextVideo__picture"><img src="./media/screenshot.jpg" alt=""></div>
+                <div class="nextVideo__info">
+                    <div class="info__title">Clone Coding | 유튜브 모바일 웹사이트 반응형으로 제작하기 HTML와 CSS의 Flexbox을 이용해서 완벽하게 제작</div>
+                    <div class="info__user"><span>Jongin</span></div>
+                    <div class="info__view"><span>1,000,000 view</span></div>
+                </div>
+                <div class="nextVideo__menu"><i class="fas fa-ellipsis-v"></i></div>
+            </div>
+
+            <div class="nextList">
+                <div class="nextVideo__picture"><img src="./media/screenshot.jpg" alt=""></div>
+                <div class="nextVideo__info">
+                    <div class="info__title">Clone Coding | 유튜브 모바일 웹사이트 반응형으로 제작하기 HTML와 CSS의 Flexbox을 이용해서 완벽하게 제작</div>
+                    <div class="info__user"><span>Jongin</span></div>
+                    <div class="info__view"><span>1,000,000 view</span></div>
+                </div>
+                <div class="nextVideo__menu"><i class="fas fa-ellipsis-v"></i></div>
+            </div>
+        </section>
+    </div>    
+</body>
+</html>
