@@ -13,9 +13,10 @@
     --font-micro: 10px;
 
     /* size */
-    --avatar-size: 36px;
-    --padding-top: 8px;
-    --padding-side: 12px;
+    /* rem은 root의 font-size를 기준으로 px의 사이즈를 정하는 상대적인 사이즈 */
+    --avatar-size: 2rem; 
+    --padding-top: 0.5rem;
+    --padding-side: 1.75rem;
 }
 
 * {
@@ -26,7 +27,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;    
+    font-family: 'Roboto', sans-serif;
 }
 
 button {
