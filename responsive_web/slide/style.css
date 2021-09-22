@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    padding: 0;
+    list-style: none;
+}
+
+/* ul {
+    display: flex;
+} */
+
+ul li:nth-child(1) {
+    position: absolute;
+    background-color: yellow;   
+    left: 0px;    
+    width: 250px;     
+    height: 50px;
+    /* animation-name: move;
+    animation-duration: 3s; */
+}
+
+ul li:nth-child(2) {
+    position: absolute;    
+    background-color: gray;   
+    left: 250px;    
+    width: 250px;          
+    height: 50px;
+    
+}
+
+ul li:nth-child(3) {
+    position: absolute;    
+    background-color: red;
+    left: 500px;    
+    width: 250px; 
+    height: 50px;
+    
+}
+
+ul li:nth-child(2):hover {
+    animation-name: move;
+    animation-duration: 3s;
+}
+
+ul li:not(:hover) {
+    height: 100px;
+}
+
+@keyframes move{
+    0% {left: 250px; top: 0px;}
+    100% {left: 0px; top: 0px;}
+}
