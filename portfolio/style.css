@@ -1,0 +1,83 @@
+:root {
+    /* color */
+    --dark-color: #140a00;
+    --logo-color: #ff0000;
+    --gray-color: #8b8a8b;
+    --white-color: #ffffff;
+    --blue-color: #483dee;
+
+    /* font size */
+    --font-large: 18px;
+    --font-medium: 14px;
+    --font-small: 12px;
+    --font-micro: 10px;
+
+    /* size */
+    /* rem은 root의 font-size를 기준으로 px의 사이즈를 정하는 상대적인 사이즈 */
+    --avatar-size: 2rem; 
+    --padding-top: 0.5rem;
+    --padding-side: 1.75rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* header */
+.header {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    padding: calc(var(--padding-top) * 2) calc(var(--padding-side) / 2);
+}
+
+.header__logo {
+    font-size: var(--font-large); 
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    color: var(--white-color);
+    text-decoration: none;
+    padding-left: var(--padding-side);
+}
+
+/* banner */
+.banner {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: yellow;
+    width: 100%;
+    height: 600px;
+}
+
+.banner .typing-text {
+    display: none;
+}
+
+.banner .typing {
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(var(--font-large) * 2.5);
+    margin:0 auto;
+    height: calc(var(--font-large) * 2.5);
+    animation-name: cursor; 
+    animation-duration: 0.7s; 
+    animation-iteration-count: infinite;    
+}
+
+@keyframes cursor {
+    0% { border-right: px solid #fff;}
+    50% { border-right: 3px solid #000;}
+    100% { border-right: 1px solid #fff;}
+}
