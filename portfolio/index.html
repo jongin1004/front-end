@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1877f468c8.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <nav class="header">
         <div class="header__logo">
-            이미지
+            <i class="far fa-address-card"></i>
             <span>Jongin</span>
         </div>
         
@@ -41,8 +42,13 @@
                 <li>이름</li>
                 <li>취미</li>
                 <li>좌우명</li>
-                <li>블라블라</li>
-                <li>블라블라</li>
+                <li><i class="fas fa-chevron-left"></i></li>
+                <li><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left"
+                    class="svg-inline--fa fa-chevron-left fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path fill="currentColor"
+                        d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z">
+                    </path>
+                </svg></li>
             </ul>
         </div>
 
@@ -54,7 +60,39 @@
         </div>
 
         <div class="project">
-
+            <div class="section">
+                <div class="slidewrap">
+                    <input type="radio" name="slide" id="slide01" checked>
+                    <input type="radio" name="slide" id="slide02">
+                    <input type="radio" name="slide" id="slide03">
+            
+                    <ul class="slidelist">
+                        <li>
+                            <a href="#">
+                                <label for="slide03" class="left">ddddddddddddddddddddd</label>
+                                <img src="./image/user_img.jpg" alt="">
+                                <label for="slide02" class="rigth"><i class="fas fa-chevron-right"></i></label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <label for="slide01" class="left"></label>
+                                <img src="./image/user_img.jpg" alt="">
+                                <label for="slide03" class="rigth"></label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                
+                                
+                                <label for="slide02" class="left"></label>
+                                <img src="./image/user_img.jpg" alt="">
+                                <label for="slide01" class="rigth"></label>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
