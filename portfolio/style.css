@@ -54,8 +54,7 @@
 
 /* banner */
 .banner {
-    display: flex;
-    text-align: center;
+    display: flex;    
     align-items: center;
     background-color: yellow;
     width: 100%;
@@ -68,12 +67,18 @@
 
 .banner .typing {
     font-family: 'Roboto', sans-serif;
-    font-size: calc(var(--font-large) * 2.5);
+    font-size: calc(var(--font-large) * 2.5);        
     margin:0 auto;
     height: calc(var(--font-large) * 2.5);
-    animation-name: cursor; 
+    /* animation-name: cursor; 
     animation-duration: 0.7s; 
-    animation-iteration-count: infinite;    
+    animation-iteration-count: infinite;     */
+}
+
+@media screen and (max-width: 850px) {
+    .banner .typing {
+        font-size: calc(var(--font-large) * 1.5);
+    }
 }
 
 @keyframes cursor {
@@ -81,3 +86,51 @@
     50% { border-right: 3px solid #000;}
     100% { border-right: 1px solid #fff;}
 }
+
+/* introduce */
+.introduce {
+    display: flex;
+}
+
+.introduce .introduce__image {
+    /* width: 350px;
+    height: 350px; */
+}
+
+.introduce .introduce__image img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+
+.introduce li {
+    list-style: none;
+    padding: var(--padding-top) var(--padding-side);  
+}
+
+/* skill */
+.skill .backEnd{
+    background-color: blue;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+.skill .frontEnd{
+    background-color: red;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+.skill .framework{
+    background-color: gray;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+
+
+/* project */
