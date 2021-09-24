@@ -14,9 +14,9 @@
 
     /* size */
     /* rem은 root의 font-size를 기준으로 px의 사이즈를 정하는 상대적인 사이즈 */
-    --avatar-size: 2rem; 
-    --padding-top: 0.5rem;
-    --padding-side: 1.75rem;
+    --avatar-size: 32px; 
+    --padding-top: 8px;
+    --padding-side: 12px;
 }
 
 * {
@@ -207,3 +207,32 @@
 .section .slidewrap [id="slide01"]:checked ~ .slidelist > li {transform:translateX(0%)}
 .section .slidewrap [id="slide02"]:checked ~ .slidelist > li {transform:translateX(-100%)}
 .section .slidewrap [id="slide03"]:checked ~ .slidelist > li {transform:translateX(-200%)}
+
+
+/* footer */
+.footer {
+    font-family: 'Roboto', sans-serif;
+    color: var(--white-color);
+    text-align: center;
+    background-color: gray;
+    width: 100%;
+    height: 30vh;
+}
+
+.footer .title {
+    font-size: calc(var(--font-large) * 2);
+    padding: 32px;
+}
+
+.footer .contectList li {
+    padding: 8px;
+}
+
+.footer .contectList li a {
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.footer .contectList li i {
+    padding-right: 8px;
+}
