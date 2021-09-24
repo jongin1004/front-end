@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+.item {
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+}
+.item1 {
+    background: #000; 
+}
+.item2 {
+    background: #fff; 
+}
+.item3 {
+    background: gray; 
+}
+.item4 {
+    background: #80cbc4; 
+}
+.item5 {
+    background: #e6ee9c;
+}
