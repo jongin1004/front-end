@@ -27,6 +27,9 @@
 
 /* header */
 .header {
+    /* display: none; */
+    position: sticky;
+    top: 0;
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: space-between;
@@ -34,7 +37,7 @@
     padding: calc(var(--padding-top) * 2) calc(var(--padding-side) / 2);
 }
 
-.header__logo {
+#header__logo {
     font-size: var(--font-large); 
 }
 
@@ -58,7 +61,7 @@
     align-items: center;
     background-color: yellow;
     width: 100%;
-    height: 600px;
+    height: 100vh;
 }
 
 .banner .typing-text {
@@ -67,9 +70,10 @@
 
 .banner .typing {
     font-family: 'Roboto', sans-serif;
-    font-size: calc(var(--font-large) * 2.5);        
+    font-size: calc(var(--font-large) * 2.5);
+    transform: translateY(-50px);    
     margin:0 auto;
-    height: calc(var(--font-large) * 2.5);
+    /* height: calc(var(--font-large) * 2.5); */
     /* animation-name: cursor; 
     animation-duration: 0.7s; 
     animation-iteration-count: infinite;     */
@@ -89,12 +93,9 @@
 
 /* introduce */
 .introduce {
+    width: 100vh;
+    height: 100vh;
     display: flex;
-}
-
-.introduce .introduce__image {
-    /* width: 350px;
-    height: 350px; */
 }
 
 .introduce .introduce__image img {
@@ -110,6 +111,11 @@
 }
 
 /* skill */
+.skill {
+    width: 100vh;
+    height: 100vh;
+}
+
 .skill .backEnd{
     background-color: blue;
     border-radius: 50%;
@@ -134,8 +140,13 @@
 
 
 /* project */
+.project {
+    width: 100vh;
+    height: 100vh;
+}
+
 .section .slidewrap {
-    width: 600px;
+    width: 800px;
     height: 600px;
     margin:0 auto;
     text-align: center;
@@ -159,6 +170,7 @@
     /* 세로축 중앙 */
     vertical-align: middle;
     width: 100%;
+    height: 100%;
     transition: all .5s;
 }
 
@@ -169,6 +181,7 @@
 
 .section .slidelist > li > a img {
     width: 100%;
+    height: 100%;
 }
 
 .section .slidelist label {
