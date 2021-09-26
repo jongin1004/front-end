@@ -26,6 +26,7 @@
 }
 
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -317,6 +318,26 @@ html {
     cursor: pointer;
 }
 
+[type=radio] {
+    display: none;
+}
+
+[type=radio] + label {
+    cursor: pointer;
+}
+
+.radioImage {
+    content: url(./image/hand-empty.svg);
+    width: 30px;
+    height: 30px;
+}
+
+.radioImage.active {
+    content: url(./image/hand-solid.svg);
+    width: 30px;
+    height: 30px;
+}
+
 .section .slidelist .left {
     z-index: 10;
     left: 30px;
@@ -384,7 +405,7 @@ html {
     color: var(--white-color);
     text-align: center;
     background-color: gray;
-    width: 100%;
+    width: 100vw;
     height: 30vh;
 }
 

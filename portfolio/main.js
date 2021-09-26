@@ -45,6 +45,24 @@ function typing() {
     }
 }
 
+// slider
+let items = document.querySelectorAll(".radioLabel");  // 모든 항목 가져오기
+let array = Array.from({length: 3}, (_, i) => i + 0);
+
+for(let i=0; i<items.length; i++) {
+    items[i].addEventListener("click", function() {  // 항목 클릭했을 때 실행할 함수        
+        for(let j=0; j<array.length; j++) {
+            if ( i == j ) {
+                // items[j].style.backgroundColor = "yellow";
+                items[j].classList.add("active");
+            } else {
+                // items[j].style.backgroundColor = "";
+                items[j].classList.remove("active");
+            }
+        }             
+    });        
+}   
+
 // Get the modal
 let project1 = document.querySelector(".project1");
 let project2 = document.querySelector(".project2");
@@ -80,3 +98,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
