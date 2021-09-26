@@ -179,6 +179,17 @@ html {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    background-color: gray;
+}
+
+.introduce .title {
+    text-align: center;
+    padding: 128px;
+}
+
+.introduce .introduce_info {
+    display: flex;
 }
 
 .introduce .introduce__image img {
@@ -199,8 +210,13 @@ html {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 32px;
+    align-items: center;    
+    background-color: yellow;
+}
+
+.skill .title {
+    text-align: center;
+    padding: 128px;
 }
 
 .skill h1 {
@@ -241,10 +257,16 @@ html {
 
 
 /* project */
-/* .project {
+.project {
     width: 100vw;
     height: 100vh;
-} */
+    background-color: #ff0000;
+}
+
+.project .title {
+    text-align: center;
+    padding: 128px;
+}
 
 .section .slidewrap {
     width: 100vw;
