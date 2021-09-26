@@ -1,3 +1,13 @@
+// header
+const menuBtn = document.querySelector(".menu_bars");
+const menu = document.querySelector(".menu");
+
+menuBtn.addEventListener("click", () => {
+    menu.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+});
+
+// typing
 let typingText = document.querySelector(".typing-text").textContent;
 const typingTarget = document.querySelector(".typing");
 typingText=typingText.split(""); 
