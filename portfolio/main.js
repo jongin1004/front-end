@@ -1,10 +1,23 @@
-// header
+// menu bars 메뉴 
 const menuBtn = document.querySelector(".menu_bars");
 const menu = document.querySelector(".menu");
 
 menuBtn.addEventListener("click", () => {
     menu.classList.toggle('active');
     menuBtn.classList.toggle('active');
+});
+
+// top button
+const topBtn = document.querySelector(".topBtn");
+
+window.addEventListener("scroll", (event) => {
+    let scroll = this.scrollY;
+    
+    if (scroll > 900) {
+        topBtn.style.opacity = "1";
+    } else {
+        topBtn.style.opacity = "0";
+    }
 });
 
 // typing
