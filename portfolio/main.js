@@ -54,10 +54,10 @@ for(let i=0; i<items.length; i++) {
         for(let j=0; j<array.length; j++) {
             if ( i == j ) {
                 // items[j].style.backgroundColor = "yellow";
-                items[j].classList.add("active");
+                items[j].classList.add("active");                
             } else {
                 // items[j].style.backgroundColor = "";
-                items[j].classList.remove("active");
+                items[j].classList.remove("active");                
             }
         }             
     });        

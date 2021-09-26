@@ -270,11 +270,12 @@ html {
 }
 
 .section .slidewrap {
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
     margin:0 auto;
     text-align: center;
     overflow: hidden;
+    position: relative;
 }
 
 .section .slidelist {
@@ -309,13 +310,14 @@ html {
     height: 50%;
 }
 
-.section .slidelist label {
+
+.slide_radio {
     position: absolute;
-    z-index: 10;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 50px;
-    cursor: pointer;
+    z-index: 20;
+    left: calc((100vw - 110px) / 2);
+    bottom: 20px;
+    height: 50px;    
+    width: 110px;
 }
 
 [type=radio] {
@@ -323,22 +325,40 @@ html {
 }
 
 [type=radio] + label {
-    cursor: pointer;
+    cursor: pointer;    
+    height: 100%;
 }
 
 .radioImage {
     content: url(./image/hand-empty.svg);
     width: 30px;
     height: 30px;
+    /* transition: all .5s; */    
 }
 
-.radioImage.active {
+.radioImage.active {    
     content: url(./image/hand-solid.svg);
-    width: 30px;
-    height: 30px;
+    /* width: 30px;
+    height: 30px; */
+    animation-name: ease-in-out;
+    animation-duration: .5s;
 }
 
-.section .slidelist .left {
+@keyframes ease-in-out {
+    0% {transform: scale(1.5);}
+    100% {transform: scale(1);}
+}
+
+/* .section .slidelist label {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    cursor: pointer;
+} */
+
+/* .section .slidelist .left {
     z-index: 10;
     left: 30px;
     background:url("./image/left.svg") center center / 20% no-repeat;
@@ -347,7 +367,7 @@ html {
 .section .slidelist .rigth {
     right: 30px;
     background:url("./image/right.svg") center center / 20% no-repeat;
-}
+} */
 
 .section .slidewrap [id="slide01"]:checked ~ .slidelist > li {transform:translateX(0%)}
 .section .slidewrap [id="slide02"]:checked ~ .slidelist > li {transform:translateX(-100%)}
