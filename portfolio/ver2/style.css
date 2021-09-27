@@ -1,0 +1,110 @@
+:root {
+    /* color */
+    --dark-color: #140a00;
+    --logo-color: #ff0000;
+    --gray-color: #8b8a8b;
+    --white-color: #ffffff;
+    --blue-color: #483dee;
+
+    /* font size */
+    --font-large: 18px;
+    --font-medium: 14px;
+    --font-small: 12px;
+    --font-micro: 10px;
+
+    /* size */
+    /* rem은 root의 font-size를 기준으로 px의 사이즈를 정하는 상대적인 사이즈 */
+    --avatar-size: 32px; 
+    --padding-top: 8px;
+    --padding-side: 12px;
+}
+
+/* 공통 CSS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--padding-top) var(--padding-side);
+    background-color: var(--gray-color);    
+    position: relative;
+}
+
+.header_logo {    
+    font-size: var(--font-large);
+    padding: var(--padding-top) var(--padding-side);
+}
+
+.header_menu {
+    display: flex;        
+}
+
+.header_menu li {
+    padding: var(--padding-top) var(--padding-side);    
+}
+
+.header_menu a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.menu_bar {
+    display: none;
+    position: fixed;
+    top: 18px;
+    right: 30px;
+    font-size: var(--font-large);
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header_menu {
+        opacity: 0;
+        position: fixed;
+        top: -200px;
+        right: 15px;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+        transition: all .5s ease-in-out;
+    }
+    
+    .menu_bar {
+        display: block;
+    }
+
+    .menu_bar.active {
+        color: var(--white-color);
+    }
+
+    .header_menu.active {
+        opacity: 1;
+        transform: translateY(250px);
+    }
+}
+
