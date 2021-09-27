@@ -108,3 +108,30 @@ li {
     }
 }
 
+/* banner */
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: yellow;        
+}
+
+.banner .typing-text {
+    display: none;
+}
+
+.banner .typing {
+    display: inline-block;
+    animation-name: typing;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    font-size: 5vw;
+}
+
+@keyframes typing {
+    0% {border-right: 1px solid #fff;}
+    50% {border-right: 1px solid #000;}
+    100% {border-right: 1px solid #fff;}
+}
