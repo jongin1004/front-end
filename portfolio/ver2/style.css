@@ -25,11 +25,6 @@
     padding: 0;
 }
 
-html {
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: 'Roboto';
 }
@@ -113,9 +108,9 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    /* width: 100vw; */
     height: 100vh;
-    background-color: yellow;        
+    background-color: #78909c;        
 }
 
 .banner .typing-text {
@@ -135,3 +130,58 @@ li {
     50% {border-right: 1px solid #000;}
     100% {border-right: 1px solid #fff;}
 }
+
+
+/* about me*/
+.aboutMe {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #a7c0cd;
+}
+
+.aboutMe .content {
+    display: flex;
+    height: 55vh;
+}
+
+.aboutMe .content .my_image {
+    width: 30%;
+    background-image: url(./image/user_img.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 10px;
+}
+
+.aboutMe .content .info {
+    width: 70%;
+    margin: 10px;
+}
+
+.aboutMe .content .info div {
+    padding-bottom: calc(var(--padding-top) * 3);
+}
+
+.aboutMe h1 {
+    padding: 10vh;
+    text-align: center;
+}
+
+
+/* skill */
+.skill { 
+    height: 100vh;
+    background-color: #78909c;
+}
+
+/* project */
+.project { 
+    height: 100vh;
+    background-color: #a7c0cd;
+}
+
+/* foooter */
+.footer { 
+    height: 30vh;
+    background-color: #4b636e;
+ }
