@@ -25,6 +25,10 @@
     padding: 0;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Roboto';
 }
@@ -179,6 +183,28 @@ li {
     height: 100vh;
     background-color: #a7c0cd;
 }
+
+.project .slideList {
+    font-size: 0;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.project .slideList li{
+    display:inline-block;
+    width: 100%;
+    transition: all .5s;
+}
+
+.project .slideList img {
+    width: 50vw;
+}
+
+[id="slide1"]:checked ~ .slideList li { transform: translateX(0%)}
+[id="slide2"]:checked ~ .slideList li { transform: translateX(-100%)}
+[id="slide3"]:checked ~ .slideList li { transform: translateX(-200%)}
+
+
 
 /* foooter */
 .footer { 
