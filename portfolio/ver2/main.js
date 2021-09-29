@@ -29,3 +29,12 @@ function typing() {
         clearInterval(typingSet);
     }
 }
+
+// slide 
+let radioList = document.querySelectorAll(".radioImage");
+
+for(let i=0; i < radioList.length; i++) {
+    radioList[i].addEventListener("click", () => {
+        radioList[i].classList.toggle("active");
+    });
+}

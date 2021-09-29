@@ -179,12 +179,46 @@ li {
 }
 
 /* project */
-.project { 
+.project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: #a7c0cd;
+    position: relative;
+}
+
+.radio_label {
+    width: 100px;
+    position: absolute;
+    bottom: 42vh;
+    z-index: 10;
+    left: calc((100vw - 100px) / 2);
+}
+
+[type="radio"] {
+    display: none;
+}
+
+.radioImage {    
+    content: url('./image/hand-empty.svg');
+    width: 30px;
+    height: 30px;
+}
+
+.radioImage.active {
+    animation-name: ease-in-out;
+    animation-duration: 1s;
+}
+
+@keyframes ease-in-out {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.5);}
+    100% {transform: scale(1);}
 }
 
 .project .slideList {
+    margin: auto auto;
     font-size: 0;
     white-space: nowrap;
     text-align: center;
@@ -203,7 +237,6 @@ li {
 [id="slide1"]:checked ~ .slideList li { transform: translateX(0%)}
 [id="slide2"]:checked ~ .slideList li { transform: translateX(-100%)}
 [id="slide3"]:checked ~ .slideList li { transform: translateX(-200%)}
-
 
 
 /* foooter */
