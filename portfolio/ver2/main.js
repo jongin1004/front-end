@@ -55,7 +55,7 @@ function Scroll() {
 
 window.addEventListener("scroll", () => {
     let scroll = this.scrollY;
-    if (scroll > 936) {
+    if (scroll > 300) {
         topBtn.classList.add("active");
     } else {
         topBtn.classList.remove("active");
