@@ -39,11 +39,25 @@ for(let i = 0; i < radioList.length; i++) {
         for (let j = 0; j < myList.length; j++) {
             if (i == j) {
                 radioList[j].classList.add("active");
-                radioList[j].style.content = "url('./image/hand-solid.svg')";
             } else {
                 radioList[j].classList.remove("active");
-                radioList[j].style.content = "url('./image/hand-empty.svg')";
             }
         }
     });
 }
+
+// topBtn
+const topBtn = document.querySelector(".topBtn");
+
+function Scroll() {
+    window.scrollTo(0, 0);
+}
+
+window.addEventListener("scroll", () => {
+    let scroll = this.scrollY;
+    if (scroll > 936) {
+        topBtn.classList.add("active");
+    } else {
+        topBtn.classList.remove("active");
+    }
+});

@@ -27,6 +27,7 @@
 
 html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -41,14 +42,41 @@ li {
     list-style: none;
 }
 
+.topBtn {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    border-radius: 50px;
+    opacity: 0;
+    transition: all .5s;
+}
+
+.topBtn.active {
+    opacity: 1;
+}
+
+.topBtn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--white-color);
+}
+
 /* header */
 .header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--padding-top) var(--padding-side);
-    background-color: var(--gray-color);    
-    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 30;
+
 }
 
 .header_logo {    
@@ -65,7 +93,11 @@ li {
 }
 
 .header_menu a {
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--white-color);
+}
+
+.header_menu a:hover {
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .menu_bar {
@@ -130,9 +162,9 @@ li {
 }
 
 @keyframes typing {
-    0% {border-right: 1px solid #fff;}
+    0% {border-right: 1px solid var(--gray-color);}
     50% {border-right: 1px solid #000;}
-    100% {border-right: 1px solid #fff;}
+    100% {border-right: 1px solid var(--gray-color);}
 }
 
 
@@ -150,7 +182,8 @@ li {
 }
 
 .aboutMe .content .my_image {
-    width: 30%;
+    flex-grow: 1;
+    min-width: 300px;
     background-image: url(./image/user_img.jpg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -158,7 +191,7 @@ li {
 }
 
 .aboutMe .content .info {
-    width: 70%;
+    flex-grow: 1.5;
     margin: 10px;
 }
 
@@ -238,8 +271,8 @@ li {
 
 /* project */
 .project {
-    /* display: flex; */
-    /* justify-content: center;
+    /* display: flex;
+    justify-content: center;
     align-items: center; */
     height: 100vh;
     background-color: #a7c0cd;
@@ -252,9 +285,10 @@ li {
 
 .project .slideWrab {
     width: 60vw;
-    height: 40vh;
-    margin: 20vh auto;
-    /* text-align: center; */
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 10vh;
+    text-align: center;
     overflow: hidden;
 }
 
@@ -277,8 +311,9 @@ li {
 }
 
 .radioImage.active {
+    content: url('./image/hand-solid.svg');
     animation-name: ease-in-out;
-    animation-duration: 1s;
+    animation-duration: .5s;
 }
 
 @keyframes ease-in-out {
@@ -296,13 +331,13 @@ li {
 
 .project .slideList li{
     display:inline-block;
-    /* vertical-align: middle; */
     width: 100%;
     transition: all .5s;
 }
 
 .project .slideList img {
     width: 100%;
+    height: 100%;
 }
 
 [id="slide1"]:checked ~ .slideList li { transform: translateX(0%)}
