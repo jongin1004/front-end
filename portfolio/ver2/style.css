@@ -402,7 +402,7 @@ li {
 
 .modal_content {
     position: absolute;
-    top: 20vh;
+    top: 5vw;
     display: flex;    
     left: calc((100% - 60% - 10%) / 2);
     background-color: var(--white-color);
@@ -412,12 +412,26 @@ li {
 }
 
 .modal_content .modalContent {
-    flex-grow: 1;    
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalContent li {
+    padding-top: 2vh;
 }
 
 .modal .modalContent .title {
     text-align: center;
     padding: 3vh;
+}
+
+.modalContent .modal_image {
+    min-height: 25vw;
+    background-image: url(./image/project1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
 }
 
 .modal i {
