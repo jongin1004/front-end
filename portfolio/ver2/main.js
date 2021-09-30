@@ -32,9 +32,18 @@ function typing() {
 
 // slide 
 let radioList = document.querySelectorAll(".radioImage");
+let myList = Array.from({length: 3}, (_, i) => i + 0);
 
-for(let i=0; i < radioList.length; i++) {
+for(let i = 0; i < radioList.length; i++) {
     radioList[i].addEventListener("click", () => {
-        radioList[i].classList.toggle("active");
+        for (let j = 0; j < myList.length; j++) {
+            if (i == j) {
+                radioList[j].classList.add("active");
+                radioList[j].style.content = "url('./image/hand-solid.svg')";
+            } else {
+                radioList[j].classList.remove("active");
+                radioList[j].style.content = "url('./image/hand-empty.svg')";
+            }
+        }
     });
 }
