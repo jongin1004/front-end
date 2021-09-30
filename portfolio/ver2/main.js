@@ -61,3 +61,18 @@ window.addEventListener("scroll", () => {
         topBtn.classList.remove("active");
     }
 });
+
+
+// modal
+let project = document.querySelector(".projectImg");
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector("#close");
+const modalContent = document.querySelector(".modalContent");
+
+project.addEventListener("click", () => {
+    modal.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
