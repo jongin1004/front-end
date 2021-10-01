@@ -337,7 +337,7 @@ li {
     display: none;
 }
 
-.radioImage {    
+.radioImage {
     content: url('./image/hand-empty.svg');
     width: 30px;
     height: 30px;
@@ -395,7 +395,7 @@ li {
     background-color: rgba(0, 0, 0, 0.3);
     z-index: -1;    
     opacity: 0;
-    transition: all 1s;
+    transition: all .5s;
 }
 
 .modal.active {
@@ -413,8 +413,12 @@ li {
 
 .modal_content .modalContent {
     flex-grow: 1;
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.modal_content .modalContent.active {
+    display: flex;
 }
 
 .modalContent li {
@@ -426,9 +430,25 @@ li {
     padding: 3vh;
 }
 
-.modalContent .modal_image {
+.modalContent .modal_image1 {
+    min-height: 25vw;
+    background-image: url(./image/yourima.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.modalContent .modal_image2 {
     min-height: 25vw;
     background-image: url(./image/ToDoList.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.modalContent .modal_image3 {
+    min-height: 25vw;
+    background-image: url(./image/GUI.gif);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;

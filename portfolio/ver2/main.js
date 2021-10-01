@@ -62,17 +62,39 @@ window.addEventListener("scroll", () => {
     }
 });
 
-
 // modal
-let project = document.querySelector(".projectImg");
+let projectList = document.querySelectorAll(".projectImg");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector("#close");
-const modalContent = document.querySelector(".modalContent");
+const modalContent = document.querySelectorAll(".modalContent");
+const modalTarget = document.querySelector(".content_target");
 
-project.addEventListener("click", () => {
-    modal.classList.add("active");
-});
+for (let i = 0; i < radioList.length; i ++) {
+    projectList[i].addEventListener("click", () => {
+        modalContent[i].classList.add("active");
+        modal.classList.add("active");
+    });
+}
+
 
 closeBtn.addEventListener("click", () => {
     modal.classList.remove("active");
+
+    setTimeout(() => {
+        for (let i = 0; i < radioList.length; i ++) {
+            modalContent[i].classList.remove("active");
+        }
+    }, 500);
 });
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.remove("active");
+
+    setTimeout(() => {
+        for (let i = 0; i < radioList.length; i ++) {
+            modalContent[i].classList.remove("active");
+        }
+    }, 500);
+  }
+}
