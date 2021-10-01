@@ -173,7 +173,11 @@ li {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #a7c0cd;
+    background-color: gray;
+    background-image: url(./image/user1.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .aboutMe .content {
@@ -181,22 +185,25 @@ li {
     height: 55vh;
 }
 
-.aboutMe .content .my_image {
+/* .aboutMe .content .my_image {
     flex-grow: 1;
     min-width: 300px;
-    background-image: url(./image/user_image.jpg);
+    width: 30%;
+    background-image: url(./image/user1.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center top;
     margin: 10px;
-}
+} */
 
-.aboutMe .content .info {
+.aboutMe .content .info { 
+    color: white; 
+    font-size: 2vw;
     flex-grow: 1.5;
-    margin: 10px;
+    padding: 0 10vw;
 }
 
-.aboutMe .content .info div {
+.aboutMe .content .info li {
     padding-bottom: calc(var(--padding-top) * 3);
 }
 
@@ -428,7 +435,8 @@ li {
     display: flex;
     background-color: var(--white-color);
     padding: 5%;
-    width: 60%;    
+    width: 60%; 
+    height: 80%;
     border-radius: 1vw;
 }
 
@@ -436,6 +444,7 @@ li {
     flex-grow: 1;
     display: none;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .modal_content .modalContent.active {
@@ -447,6 +456,7 @@ li {
 }
 
 .modal .modalContent .title {
+    font-size: 2vw;
     text-align: center;
     padding: 3vh;
 }
