@@ -360,7 +360,28 @@ li {
     margin: 0 auto;
     font-size: 0;
     white-space: nowrap;
+    /* overflow: hidden; */
 }
+
+/* .project .modalCaptin {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    color: var(--white-color);
+    transition: all .5s;
+}
+
+.project .modalCaptin.active{
+    opacity: 1;
+    transform: translateY(-100%);
+} */
 
 .project .slideList li{
     display:inline-block;

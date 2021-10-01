@@ -69,7 +69,7 @@ const closeBtn = document.querySelector("#close");
 const modalContent = document.querySelectorAll(".modalContent");
 const modalTarget = document.querySelector(".content_target");
 
-for (let i = 0; i < radioList.length; i ++) {
+for (let i = 0; i < 3; i ++) {
     projectList[i].addEventListener("click", () => {
         modalContent[i].classList.add("active");
         modal.classList.add("active");
@@ -98,3 +98,25 @@ window.onclick = function(event) {
     }, 500);
   }
 }
+
+
+// mouseover
+// var delay = function (elem, callback) {
+//     var timeout = null;
+//     elem.onmouseover = function() {
+//         // Set timeout to be a timer which will invoke callback after 1s
+//         timeout = setTimeout(callback, 1000);
+//     };
+
+//     elem.onmouseleave = function() {
+//         // Clear any timers set to timeout
+//         document.querySelector('.modalCaptin').classList.remove("active");
+//         clearTimeout(timeout);  
+        
+//     }
+// };
+
+
+// delay(document.querySelector('.image_container'), function() {
+//     document.querySelector('.modalCaptin').classList.add("active");
+// });
