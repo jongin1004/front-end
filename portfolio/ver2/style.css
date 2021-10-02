@@ -174,10 +174,10 @@ li {
     flex-direction: column;
     height: 100vh;
     background-color: gray;
-    background-image: url(./image/user1.jpg);
+    /* background-image: url(./image/user1.jpg);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center; */
 }
 
 .aboutMe .content {
@@ -185,22 +185,25 @@ li {
     height: 55vh;
 }
 
-/* .aboutMe .content .my_image {
+.aboutMe .content .my_image {
     flex-grow: 1;
     min-width: 300px;
-    width: 30%;
+    width: 100%;
     background-image: url(./image/user1.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center top;
-    margin: 10px;
-} */
+    margin: 1vw;
+}
 
 .aboutMe .content .info { 
     color: white; 
-    font-size: 2vw;
+    font-size: var(--font-large);
     flex-grow: 1.5;
-    padding: 0 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1vw;
 }
 
 .aboutMe .content .info li {
@@ -224,7 +227,8 @@ li {
 
     .aboutMe .content .info {
         flex-grow: 0.5;
-        margin: 10px;
+        margin: 10px 50px;
+        font-size: var(--font-small);
     }
 }
 
@@ -241,6 +245,10 @@ li {
 
 .skill > h1 {
     padding: 10vh;
+}
+
+.skill .title {
+    padding-top: 30px;
 }
 
 .skill .stack_container {
