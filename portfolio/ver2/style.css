@@ -484,10 +484,11 @@ li {
 .modal_content {
     display: flex;
     background-color: var(--white-color);
-    padding: 5%;
-    width: 60%; 
-    height: 80%;
+    padding: 5vw;
+    width: 85%; 
+    height: 95%;
     border-radius: 1vw;
+    overflow-y: auto;
 }
 
 .modal_content .modalContent {
