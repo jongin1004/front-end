@@ -47,13 +47,12 @@ li {
 
 .topBtn {
     position: fixed;
-    bottom: 5vh;
+    bottom: 5vw;
     right: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75px;
-    height: 75px;
+    padding: 10px;
     border: 1px solid black;
     border-radius: 50px;
     opacity: 0;
@@ -364,18 +363,21 @@ li {
     align-items: center; */
     height: 100vh;
     background-color: #a7c0cd;
+    text-align: center;
+    padding-top: 5vw;
 }
 
-.project h1 {
-    text-align: center;
-    padding-top: 10vh;
+.project span {
+    font-size: 4vw;
+    padding: 5vw;
+    
 }
 
 .project .slideWrab {
     width: 60vw;
-    height: 100%;
+    /* height: 100%; */
     margin: 0 auto;
-    padding-top: 10vh;
+    padding-top: 10vw;
     text-align: center;
     overflow: hidden;
 }
@@ -415,10 +417,10 @@ li {
     margin: 0 auto;
     font-size: 0;
     white-space: nowrap;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
-/* .project .modalCaptin {
+.project .modalCaptin {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -436,7 +438,7 @@ li {
 .project .modalCaptin.active{
     opacity: 1;
     transform: translateY(-100%);
-} */
+}
 
 .project .slideList li{
     display:inline-block;
@@ -546,37 +548,57 @@ li {
 
 /* foooter */
 .footer { 
-    height: 300px;
+    height: 20vw;
     background-color: #4b636e;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* padding-top: 3vw; */
  }
 
  .footer li {
+    flex-basis: 50%;
     text-align: center;
-    margin: 1vw;
+    /* margin: 1vw; */
  }
 
  .footer i {
     color: var(--white-color);
-    font-size: 3vw; 
+    font-size: 2vw;    
  } 
 
  .footer .contect_icons {
+     width: 100%;
      display: flex;
      justify-content: space-evenly;
+     flex-basis: 50%;
  }
 
  .footer p {
-     font-size: 2vw;
-     margin: 1vw;
+     font-size: 1vw;
+     /* padding: 1vw; */
      color: var(--white-color);
  }
 
- .footer span {
-     padding-bottom:5vw;
-     font-size: 5vw;
+ .footer .title {
+     flex-basis: 50%;
+     /* padding-top:1vw; */
+     font-size: 4vw;
+     display: flex;
+     align-items: center;     
+ }
+
+ .footer .icon_name {
+     font-size: 1vw;
+ }
+
+ .footer .contect_list {
+     width: 30%;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
  }
 
