@@ -282,7 +282,8 @@ li {
     align-items: center;
 }
 
-.skill > h1 {
+.skill > span {
+    font-size: 4vw;
     padding: 10vh;
 }
 
@@ -290,54 +291,66 @@ li {
     padding-top: 30px;
 }
 
-.skill .stack_container {
+/* .skill .stack_container {
     padding: 0 3vh;
-}
+} */
 
 .skill .title {
     text-align: center;
-    font-size: calc(var(--font-large) * 1.5);
+    font-size: var(--font-large);
 }
 
 .skill .stackList {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .skill .stackList li {
     position: relative;
-    padding: var(--padding-top) var(--padding-side);
-    overflow: hidden;
+    /* padding: var(--padding-top) var(--padding-side); */
+    overflow: hidden;    
 }
 
 .skill .stackList i {
-    text-align: center;
-    padding: 8px 8px;
-    border: 1px solid white;
-    border-radius: 4px;
+    text-align: center;    
     font-size: calc(var(--font-large) * 2);
     color: var(--white-color);
-    width: 45px;
+    width: 50px;
+    /* padding: 8px 8px; */
+    border: 1px solid white;
+    border-radius: 4px;
 }
 
 .skill .stackList .captin {
-    display:flex;
+    display:absolute;
     justify-content: center;
     align-items: center;
     position: absolute;
-    height: 54px;
-    top: 63px;
-    width: 63px;
+    height: calc(var(--font-large) * 2);
+    top: calc(var(--font-large) * 2);
+    width: 50px;
+    left: 0;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     color: var(--white-color);
     transition: all .5s;
+    font-size: 1vw;    
 }
 
 .stackList li:hover .captin {
     opacity: 1;
-    transform: translateY(-54px);
+    transform: translateY(calc(var(--font-large) * (-2)));
+}
+
+.stackList .captin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stackList .captin span {
+    font-size: 1px;
 }
 
 @media screen and (max-width: 768px) {
@@ -353,6 +366,24 @@ li {
 
     .stack_container > div {
         padding: 5vw;
+    }
+
+    .skill .stackList .captin {
+        top:calc(var(--font-large) * 1.5);
+        height: calc(var(--font-large) * 1.5);
+        width: 40px;
+        left: 0;        
+        border-radius: 4px;                
+        font-size: 1vw;
+    }
+
+    .skill .stackList i {        
+        font-size: calc(var(--font-large) * 1.5);        
+        width: 40px;
+    }
+
+    .stackList li:hover .captin {        
+        transform: translateY(calc(var(--font-large) * (-1.5)));
     }
 }
 
