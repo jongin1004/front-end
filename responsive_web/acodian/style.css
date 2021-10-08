@@ -1,0 +1,30 @@
+*{  margin: 0; padding: 0; }
+ul{list-style: none;}
+.accordion-box{
+  width: 100%; max-width: 600px;
+  margin:  0 auto;
+}
+.title{
+  width: 100%;  
+  line-height: 60px; 
+  background: #000; 
+  color: #fff; 
+  box-sizing: border-box;
+  padding: 0 10px;
+  position: relative;
+  overflow: hidden;
+}
+.con{
+  transition: all 0.5s;
+  /* padding: 20px;  */
+  /* display:none; */
+  height: 0;
+  overflow: hidden;
+}
+
+.con.active {
+    /* display:block; */
+  height: 50px;
+}
+
+
