@@ -144,7 +144,7 @@ li {
 
 /* banner */
 .banner {
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,11 +177,18 @@ li {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: gray;
-    /* background-image: url(./image/user1.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center; */
+    background-color: #a7c0cd;
+}
+
+/* .aboutMe ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
+
+.aboutMe li {
+    margin: 3px;
+    border-bottom: 1px solid gray;
 }
 
 .aboutMe .content {
@@ -194,14 +201,13 @@ li {
     flex-basis: 33%;
     /* min-width: 300px; */
     /* width: 100%; */
-    /* background-image: url(./image/user1.jpg);
+    background-image: url(./image/user1.jpg);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center top; */
+    background-position: center top;
     /* margin: 1vw; */
     /* margin: 0 auto; */
-    text-align: center;
-    vertical-align: middle;
+    text-align: center;    
     padding-top: 2vw;
 }
 
@@ -223,15 +229,42 @@ li {
     text-align: center;    
 }
 
+.aboutMe .info .aco_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;      
+    height: 30px;
+    background: #000; 
+    color: #fff; 
+    box-sizing: border-box;
+    padding: 0 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.aboutMe .info .con {
+    transition: all 0.5s;
+    /* padding: 20px;  */
+    /* display:none; */
+    height: 0;
+    overflow: hidden;
+}
+
+.aboutMe .info .con.active {
+    /* display:block; */
+    height: 100%;
+}
+
 .persnal_info {
     text-align: center;
     /* flex-grow: 1;     */
     flex-basis: 50%;
 }
 
-.persnal_info li {
+/* .persnal_info li {
     padding: 2vh;
-}
+} */
 
 .certification_info {    
     /* flex-grow: 1; */
@@ -408,7 +441,7 @@ li {
     width: 60vw;
     /* height: 100%; */
     margin: 0 auto;
-    padding-top: 10vw;
+    padding-top: 3%;
     text-align: center;
     overflow: hidden;
 }
