@@ -175,7 +175,11 @@ li {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #a7c0cd;
+    background-color: #a7c0cd;    
+}
+
+.aboutMe .info div {
+    font-family: 'Kosugi Maru';
 }
 
 .aboutMe li {
@@ -185,7 +189,7 @@ li {
 .aboutMe .content {
     display: flex;    
     height: 100%;
-    width: 100%;
+    width: 100%;    
 }
 
 .aboutMe .content .my_image {
@@ -536,21 +540,34 @@ li {
     z-index: 30;
 }
 
-.modal_content {
+.modal_content {    
     display: flex;
-    background-color: var(--white-color);
     padding: 5vw;
     width: 85%; 
-    height: 95%;
+    height: 90%;
     border-radius: 1vw;
     overflow-y: auto;
+    font-family: 'Kosugi Maru';
+    background-color: #4b636e;
+    color: #a7c0cd;
+    border: 3px solid #a7c0cd;
 }
+
+.modal_content p {
+    font-size: var(--font-small);
+    color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+}
+
+/* .modal_content {
+
+} */
 
 .modal_content .modalContent {
     flex-grow: 1;
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
 
 .modal_content .modalContent.active {
@@ -558,7 +575,7 @@ li {
 }
 
 .modalContent li {
-    padding-top: 2vh;
+    padding: 5px;
 }
 
 .modal .modalContent .title {
