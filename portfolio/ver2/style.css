@@ -172,6 +172,8 @@ li {
 .aboutMe {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
     background-color: #a7c0cd;
 }
@@ -181,18 +183,22 @@ li {
 }
 
 .aboutMe .content {
-    display: flex;
-    height: 55vh;
+    display: flex;    
+    height: 100%;
+    width: 100%;
 }
 
 .aboutMe .content .my_image {
     flex-basis: 33%;
+    max-width: 300px;
+    max-height: 500px;
+    /* flex-grow: 1; */
     background-image: url(./image/user1.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center top;
     text-align: center;    
-    padding-top: 2vw;
+    margin-left: 10px;
 }
 
 .aboutMe .content img {    
@@ -201,7 +207,7 @@ li {
 }
 
 .aboutMe .content .info { 
-    padding: 10px;
+    padding-left: 10px;
     flex-basis: 66%;
     display: flex;    
     font-size: 1vw;
@@ -256,9 +262,11 @@ li {
 }
 
 .aboutMe > span {
-    font-size: 4vw;
-    padding: 5vw;
-    text-align: center;
+    flex-basis: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;    
 }
 
 @media screen and (max-width: 768px) {
@@ -268,18 +276,22 @@ li {
     }
 
     .aboutMe .content .my_image {
-        flex-grow: 0;
+        flex-basis: 40%;
+        max-height: 100%;
+        max-width: 100%;
     }
 
-    /* .aboutMe .content .info {
-        flex-grow: 0.5;
-        margin: 10px 50px;
-        font-size: var(--font-small);
-    } */
+    .aboutMe .content .info {
+        padding-top: 10px;
+        flex-basis: 60%;
+    }
 
-    .aboutMe .content img {    
-        width: 150px;
-        height: 200px;
+    .aboutMe .info .aco_title {
+        height: 20px;
+    }    
+
+    .aboutMe > span {
+        flex-basis: 20%;
     }
 }
 
