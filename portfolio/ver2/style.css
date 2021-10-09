@@ -234,6 +234,11 @@ li {
     padding: 0 10px;
     position: relative;
     overflow: hidden;
+    border-radius: 4px;
+}
+
+.aboutMe .info .aco_title:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .aboutMe .info .con {
