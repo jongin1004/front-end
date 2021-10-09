@@ -285,27 +285,32 @@ li {
 
 
 /* skill */
-.skill { 
-    /* width: 100vw; */
+.skill {     
     height: 100vh;
     background-color: #78909c;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .skill > span {
-    font-size: 4vw;
-    padding: 10vh;
+    display: flex;
+    align-items: center;
+    flex-basis: 20%;
+    font-size: 4vw;    
 }
 
 .skill .title {
     padding-top: 30px;
 }
 
-/* .skill .stack_container {
-    padding: 0 3vh;
-} */
+.skill .stack_container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+}
 
 .skill .title {
     text-align: center;
@@ -318,8 +323,7 @@ li {
 }
 
 .skill .stackList li {
-    position: relative;
-    /* padding: var(--padding-top) var(--padding-side); */
+    position: relative;    
     overflow: hidden;    
 }
 
@@ -327,8 +331,7 @@ li {
     text-align: center;    
     font-size: calc(var(--font-large) * 2);
     color: var(--white-color);
-    width: 50px;
-    /* padding: 8px 8px; */
+    width: 50px;    
     border: 1px solid white;
     border-radius: 4px;
 }
@@ -366,18 +369,12 @@ li {
 }
 
 @media screen and (max-width: 768px) {
-    .skill h1 {
-        padding-top: 30vh;
-    }
-
-    .stack_container {
-        height: 100%;
-        display: flex;
-        align-items: flex-start;
+    .skill .stack_container {                
+        flex-direction: row;        
     }
 
     .stack_container > div {
-        padding: 5vw;
+        padding: 0 5vw;
     }
 
     .skill .stackList .captin {
@@ -493,7 +490,7 @@ li {
 }
 
 .project .slideList img {
-    width: 80%;
+    width: 60%;
     height: 100%;
 }
 
@@ -502,8 +499,8 @@ li {
 [id="slide3"]:checked ~ .slideList li { transform: translateX(-200%)}
 
 @media screen and (max-width: 768px) {
-    .project .slideWrab {
-        width: 90%;
+    .project .slideList img {
+        width: 90%;        
     }
 }
 
