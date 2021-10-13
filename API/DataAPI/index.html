@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="getData(); return false;">
+        <select name="cars" class="search">
+            <option value="일본 JP">일본</option>
+            <option value="미국 US">미국</option>
+            <option value="영국 GB">영국</option>
+            <option value="프랑스 FR">프랑스</option>
+        </select>
+        <!-- <input type="text" name="con" class="search"> -->
+        <input type="submit" value="제출">
+    </form>
+    <p id="data"></p>
+    <script>        
+        function getData() {
+            let data = document.querySelector("#data");
+            data.innerHTML = "";
+            let search = document.querySelector(".search").value.split(" ");
+            let url = ``
+
+            fetch(url)
+            .then(res => res.json())
+            .then(myJson => {
+                // document.querySelector("#data").innerText = JSON.stringify(myJson);
+                for (let i = 0; i < myJson.data.length; i++) {
+                    data.innerHTML += myJson.data[i]["html_origin_cn"];
+                    data.innerHTML += myJson.data[i]["txt_origin_cn"];
+                }                
+            });            
+        }
+        
+
+    </script>
+</body>
+</html>
