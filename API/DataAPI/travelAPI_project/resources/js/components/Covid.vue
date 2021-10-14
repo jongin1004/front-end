@@ -1,5 +1,5 @@
 <template>
-    <div class="black-bg" v-if="bool">
+    <div class="black-bg" v-if="modalBool">
         <div class="white-bg">
             <div v-html="detailContent">
             </div>        
@@ -11,11 +11,15 @@
             <input type="text" name="search" @keyup.enter="getData(search)" v-model="search">
         </div>
 
-        <div class="list" >
-            <div v-for="(news, i) in data" :key="i" @click="showDetail(i)">
+        <div class="list">            
+            <div                
+                v-for="(news, i) in data" 
+                :key="i" 
+                @click="showDetail(i)"
+            >                
                 {{ news.title }}
-            </div>
-        </div>
+            </div>                                  
+        </div>        
     </div>
 </template>
 
@@ -24,28 +28,47 @@ export default {
     data() {
         return {
             search: '',
+            iso_code: '',
             data: '',
-            bool: false,
+            modalBool: false,
             detailContent: '',
+            countries: '',            
+
         }
+    },
+
+    created() {
+        axios.get('api/getCountry').then(res => {
+            this.countries = res.data.countries;            
+        })
     },
 
     methods: {
         getData(search) {
-            // data = "";
-            let url = `http://apis.data.go.kr/1262000/CountryCovid19SafetyServiceNew/getCountrySafetyNewsListNew?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${search}&cond[country_iso_alp2::EQ]=US`
+            this.data = '';
+            for (let i = 0; i < this.countries.length; i++) {
+                if (this.countries[i]["country_han"] === this.search) {
+                    this.iso_code = this.countries[i]["iso_code_two"];
+                }
+            }            
+            let url = `http://apis.data.go.kr/1262000/CountryCovid19SafetyServiceNew/getCountrySafetyNewsListNew?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${search}&cond[country_iso_alp2::EQ]=${this.iso_code}`
 
             fetch(url)
             .then(res => res.json())
-            .then(myJson => {
-                this.data = myJson.data;
-                console.log(myJson);
-            }); 
-        },
+            .then(myJson => {               
+                if ( myJson.data.length > 0 ) {
+                    this.data = myJson.data;
+                } else {
+                    alert("죄송합니다. 해당 국가에 대한 정본는 확인되지 않습니다.");
+                }                
+            });
+            
+            this.search = '';
+        }, 
 
         showDetail(idx) {
             this.detailContent = this.data[idx]["html_origin_cn"];
-            this.bool = true;
+            this.modalBool = true;
         }
     }
 }
