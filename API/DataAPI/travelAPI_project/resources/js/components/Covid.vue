@@ -1,15 +1,16 @@
 <template>
     <!-- modal -->
-    <div class="modal" v-bind:class="{ active : modalBool }">
+    <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
         <div class="modal_content">
             <div v-html="detailContent"></div>
-            <div class="close" @click="closeModal"><i class="fas fa-times" id="close"></i></div>
+            <!-- <div class="close"><i class="fas fa-times" id="close"></i></div> -->
         </div>
     </div>
 
     <div class="content">
         <div class="search">
-            <input type="text" name="search" @keyup.enter="getData(search)" v-model="search">
+            <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search">
+            <i class="fas fa-search"></i>
         </div>
 
         <div class="list">            
@@ -72,7 +73,7 @@ export default {
             this.modalBool = true;
         },
 
-        closeModal() {
+        closeModal() {                
             this.modalBool = false;
         }
     }
@@ -94,10 +95,20 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-.content input {
-    width: 70%;
+
+.content .searchText{
+    width: 100%;
     border-radius: 4px;
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+.content i {
+    position: absolute;
+    left: 4px;
+    font-size: 8px;
 }
 
 .content .list {
