@@ -1,13 +1,25 @@
-<template>
-    <div class="wrapper">
-        <div v-for="(menu, i) in menus" :key="i" @click="test(menu)">
+<template>    
+
+    <div class="wrapper" v-if="categoryState === 'main'">
+        <div v-for="(menu, i) in menus" :key="i" @click="changeCategory(menu)">
             {{ menu }}
         </div>
-    </div>
+    </div>        
+    <Covid v-else-if="categoryState === '코로나소식'"/>
+
+    <StatusOfEntry v-else-if="categoryState === '해외입국자 조치현황'" />
 </template>
 
 <script>
+import Covid from './Covid.vue'
+import StatusOfEntry from './StatusOfEntry.vue'
+
 export default {
+    components: {
+        Covid,
+        StatusOfEntry,
+    },
+
     data() {
         return {
             menus: [
@@ -18,12 +30,13 @@ export default {
                 "여행경보",
                 "입국허가"
             ],
+            categoryState: 'main',
         }
     },
 
     methods: {
-        test(text) {
-            console.log(text);
+        changeCategory(category) {
+            this.categoryState = category;
         }
     }
 }

@@ -8,6 +8,7 @@
     </div>
 
     <div class="content">
+        <div>코로나 소식</div>
         <div class="search">
             <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search">
             <i class="fas fa-search"></i>
@@ -40,7 +41,7 @@ export default {
     },
 
     created() {
-        axios.get('api/getCountry').then(res => {
+        axios.get('api/allCountry').then(res => {
             this.countries = res.data.countries;            
         })
     },

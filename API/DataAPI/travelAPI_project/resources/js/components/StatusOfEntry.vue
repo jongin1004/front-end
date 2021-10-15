@@ -8,6 +8,7 @@
     </div>
 
     <div class="content">
+        <div>해외입국자 조치현황</div>
         <div class="search">
             <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search" placeholder="국가이름을 검색해보세요.">
             <i class="fas fa-search"></i>
@@ -24,7 +25,7 @@
         </div>     
 
         <!-- Paginate -->
-        <div>
+        <div class="pagination">
             <pagination :page-info="pageInfo" @page-number="getPageNumber"/>            
         </div>   
     </div>
@@ -69,26 +70,8 @@ export default {
             });
         },
 
-        getData(search) {
-            this.data = '';                 
-            
-            
-
-            fetch(url)
-            .then(res => res.json())
-            .then(myJson => {
-                if ( myJson.data.length > 0 ) {
-                    this.data = myJson.data;
-                } else {
-                    alert("죄송합니다. 해당 국가에 대한 정본는 확인되지 않습니다.");
-                }             
-            });
-            
-            this.search = '';
-        },
-
         showDetail(country_name, iso_code) {
-            let url = `https://cors-anywhere.herokuapp.com/http://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${country_name}&cond[country_iso_alp2::EQ]=${iso_code}`
+            let url = `http://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${country_name}&cond[country_iso_alp2::EQ]=${iso_code}`
 
             fetch(url)
             .then(res => res.json())
@@ -207,6 +190,13 @@ export default {
 .modal i:hover {
     color: rgb(0, 0, 0);
     transform: scale(1.5);
+}
+
+/* pagination */
+.pagination {
+    width: 100%;
+    /* text-align: center; */
+    /* margin: 8px; */
 }
 
 </style>
