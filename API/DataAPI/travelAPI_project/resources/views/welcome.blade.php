@@ -12,7 +12,7 @@
 
         <div class="main">
             {{-- <main-page /> --}}
-            <covid-page>
+            <status-of-entry />
         </div>  
     </div>    
 @endsection

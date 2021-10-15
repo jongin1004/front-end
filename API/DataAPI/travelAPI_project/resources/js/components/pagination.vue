@@ -3,11 +3,15 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
                 <li class="page-item">
-                    <a class="page-link" @click="changePage(pageList.current_page - 1)">Previous</a>
+                    <a class="page-link" @click="changePage(pageInfo.current_page - 1)">Previous</a>
                 </li>
-                <li class="page-item" v-for="(num, i) in new Array(lastPage)" :key="i"><a class="page-link" @click="changePage(i + 1)">{{ i + 1 }}</a></li>
+                <!-- <li class="page-item" v-for="(num, i) in new Array(lastPage)" :key="i">
+                    <a class="page-link" v-if="i === 3" @click="changePage(i + 1)">
+                        {{ i + 1 }}
+                    </a>
+                </li> -->
                 <li class="page-item">
-                    <a class="page-link" @click="changePage(pageList.current_page + 1)">Next</a>
+                    <a class="page-link" @click="changePage(pageInfo.current_page + 1)">Next</a>
                 </li>
             </ul>
         </nav>
@@ -16,7 +20,7 @@
 
 <script>
 export default {
-    props: ['pageList'],
+    props: ['pageInfo'],
 
     // data() {
     //     return {
@@ -34,13 +38,13 @@ export default {
     computed: {
         currentPage: {
             get() {
-                return this.pageList.current_page;
+                return this.pageInfo.current_page;
             }
         },
 
         lastPage: {
             get() {
-                return this.pageList.last_page;
+                return this.pageInfo.last_page;
             }
         }
     },
@@ -51,7 +55,7 @@ export default {
             if ( val <= 0 || val > this.lastPage ) {
                 return;
             }
-            this.pageList.current_page = val;            
+            this.pageInfo.current_page = val;            
         }
     }
 }

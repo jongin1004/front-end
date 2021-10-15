@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Country;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\CountryImport;
 use App\Exports\CountryExport;
+use App\Imports\CountryImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CountryController extends Controller
 {
@@ -31,5 +32,14 @@ class CountryController extends Controller
     public function fileExport() 
     {
         return Excel::download(new CountryExport, 'countrys-collection.xlsx');
-    }    
+    }  
+
+    public function getData() 
+    {
+        $countries = Country::paginate(10);
+
+        return response()->json([
+            'countries' => $countries,
+        ], 200);
+    }
 }

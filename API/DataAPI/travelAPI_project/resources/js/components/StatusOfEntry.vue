@@ -9,24 +9,35 @@
 
     <div class="content">
         <div class="search">
-            <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search">
+            <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search" placeholder="국가이름을 검색해보세요.">
             <i class="fas fa-search"></i>
         </div>
 
         <div class="list">            
             <div                
-                v-for="(news, i) in data" 
+                v-for="(country, i) in countries" 
                 :key="i" 
                 @click="showDetail(i)"
             >                
-                {{ news.title }}
+                {{ country.country_han }}
             </div>                                  
-        </div>        
+        </div>     
+
+        <!-- Paginate -->
+        <div>
+            <pagination :page-info="pageInfo" @page-number="getPageNumber"/>            
+        </div>   
     </div>
 </template>
 
 <script>
+import pagination from './pagination';
+
 export default {
+    components: {
+        pagination,
+    },
+
     data() {
         return {
             search: '',
@@ -34,18 +45,31 @@ export default {
             data: '',
             modalBool: false,
             detailContent: '',
-            countries: '',            
+            countries: '', 
+            pageInfo: '',      
 
         }
     },
 
     created() {
-        axios.get('api/getCountry').then(res => {
-            this.countries = res.data.countries;            
-        })
+        // axios.get('api/getCountry').then(res => {
+        //     this.countries = res.data.countries;            
+        // })
+
+        this.getCountry();
     },
 
     methods: {
+        //모든 data를 가져올 때 기반이되는 함수 
+        getCountry(pageNum = 1) {
+            axios.get('api/getCountry?page='+ pageNum)
+            .then(res => {                       
+                this.pageInfo = res.data.countries;
+                this.countries = res.data.countries.data;
+                console.log(res.data.countries);
+            });
+        },
+
         getData(search) {
             this.data = '';
             for (let i = 0; i < this.countries.length; i++) {
@@ -75,23 +99,28 @@ export default {
 
         closeModal() {                
             this.modalBool = false;
-        }
+        },
+
+        // paginate components에서 emit을 통해 실행된느 함수
+        // currentPage number을 받아와서 해당 페이지에 맞는 data를 가져오도록 
+        getPageNumber(pageNum) {
+            this.getCountry(pageNum);
+        },
     }
 }
 </script>
 
 <style>
-.content {
-    flex-grow: 1;
+.content {    
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height: 70%;
+    height: 100%;
 }
 
 .content .search {
-    flex-basis: 30%;
+    flex-basis: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
