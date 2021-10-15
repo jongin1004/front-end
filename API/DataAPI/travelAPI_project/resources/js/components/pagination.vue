@@ -1,15 +1,11 @@
 <template>
-    <div>
+    <div class="pagination_box">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
                 <li class="page-item">
                     <a class="page-link" @click="changePage(pageInfo.current_page - 1)">Previous</a>
                 </li>
-                <!-- <li class="page-item" v-for="(num, i) in new Array(lastPage)" :key="i">
-                    <a class="page-link" v-if="i === 3" @click="changePage(i + 1)">
-                        {{ i + 1 }}
-                    </a>
-                </li> -->
+
                 <li class="page-item">
                     <a class="page-link" @click="changePage(pageInfo.current_page + 1)">Next</a>
                 </li>
@@ -21,12 +17,6 @@
 <script>
 export default {
     props: ['pageInfo'],
-
-    // data() {
-    //     return {
-    //         ToDoList: [],
-    //     }
-    // },
 
     watch: {
         // 현재 선택된 페이지 번호를 부모 컴포넌트로 보내서, axios할 때, 가져오고 데이터의 페이지부분을 지정해준다. 

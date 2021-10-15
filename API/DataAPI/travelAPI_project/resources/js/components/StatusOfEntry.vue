@@ -24,10 +24,8 @@
             </div>                                  
         </div>   
 
-        <!-- Paginate -->
-        <div class="pagination">
-            <pagination :page-info="pageInfo" @page-number="getPageNumber"/>            
-        </div>   
+        <!-- Paginate -->        
+        <pagination :page-info="pageInfo" @page-number="getPageNumber"/>                
     </div>
 </template>
 
