@@ -17,7 +17,7 @@
             <div                
                 v-for="(country, i) in countries" 
                 :key="i" 
-                @click="showDetail(i)"
+                @click="showDetail(country.country_han, country.iso_code_two)"
             >                
                 {{ country.country_han }}
             </div>                                  
@@ -65,19 +65,14 @@ export default {
             axios.get('api/getCountry?page='+ pageNum)
             .then(res => {                       
                 this.pageInfo = res.data.countries;
-                this.countries = res.data.countries.data;
-                console.log(res.data.countries);
+                this.countries = res.data.countries.data;                
             });
         },
 
         getData(search) {
-            this.data = '';
-            for (let i = 0; i < this.countries.length; i++) {
-                if (this.countries[i]["country_han"] === this.search) {
-                    this.iso_code = this.countries[i]["iso_code_two"];
-                }
-            }            
-            let url = `http://apis.data.go.kr/1262000/CountryCovid19SafetyServiceNew/getCountrySafetyNewsListNew?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${search}&cond[country_iso_alp2::EQ]=${this.iso_code}`            
+            this.data = '';                 
+            
+            
 
             fetch(url)
             .then(res => res.json())
@@ -92,9 +87,19 @@ export default {
             this.search = '';
         },
 
-        showDetail(idx) {
-            this.detailContent = this.data[idx]["html_origin_cn"];
-            this.modalBool = true;
+        showDetail(country_name, iso_code) {
+            let url = `https://cors-anywhere.herokuapp.com/http://apis.data.go.kr/1262000/CountryOverseasArrivalsService/getCountryOverseasArrivalsList?serviceKey=Sy%2FB8TPlVdYC0q7iMLyImE7PjeUf01J9DOja4msnx3nAJzqa72ZOCVKE8VQGrpqh6zT7bQs4lJxkBD2xjCMxvQ%3D%3D&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${country_name}&cond[country_iso_alp2::EQ]=${iso_code}`
+
+            fetch(url)
+            .then(res => res.json())
+            .then(myJson => {                                
+                if ( myJson.data.length > 0 ) {                    
+                    this.detailContent = myJson.data[0].txt_origin_cn;
+                    this.modalBool = true;
+                } else {
+                    alert("죄송합니다. 해당 국가에 대한 정본는 확인되지 않습니다.");
+                }             
+            });                        
         },
 
         closeModal() {                
@@ -141,7 +146,7 @@ export default {
 }
 
 .content .list {
-    flex-basis: 70%;
+    flex-basis: 60%;
     border: 1px solid #000;
     border-radius: 4px; 
     padding: 4px;
