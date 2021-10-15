@@ -1,8 +1,9 @@
 <template>
-    <div class="black-bg" v-if="modalBool">
-        <div class="white-bg">
-            <div v-html="detailContent">
-            </div>        
+    <!-- modal -->
+    <div class="modal" v-bind:class="{ active : modalBool }">
+        <div class="modal_content">
+            <div v-html="detailContent"></div>
+            <div class="close" @click="closeModal"><i class="fas fa-times" id="close"></i></div>
         </div>
     </div>
 
@@ -55,20 +56,24 @@ export default {
 
             fetch(url)
             .then(res => res.json())
-            .then(myJson => {               
+            .then(myJson => {
                 if ( myJson.data.length > 0 ) {
                     this.data = myJson.data;
                 } else {
                     alert("죄송합니다. 해당 국가에 대한 정본는 확인되지 않습니다.");
-                }                
+                }             
             });
             
             this.search = '';
-        }, 
+        },
 
         showDetail(idx) {
             this.detailContent = this.data[idx]["html_origin_cn"];
             this.modalBool = true;
+        },
+
+        closeModal() {
+            this.modalBool = false;
         }
     }
 }
@@ -104,11 +109,10 @@ export default {
 }
 
 .content .list > div {
-    border-bottom: 1px solid #000;
-    /* border-radius: 4px; */
+    border-bottom: 1px solid #000;    
     margin-bottom: 4px;
     padding: 8px;
-    /* background-color: #4fc3f7; */
+    font-size: 8px;
 }
 
 
@@ -117,18 +121,47 @@ export default {
     background-color: #0093c4;
 }
 
-.black-bg {
-    width: 100%; height: 100%;
-    background: rgba(57, 17, 90, 0.5); 
-    position: fixed; padding: 20px;
+/* modal */
+.modal {    
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;    
+    opacity: 0;
+    transition: all .5s;
 }
-.white-bg {
-    width: 80%; background: white;
-    border-radius: 8px;
-    padding: 20px;
-    position: absolute;
-    top: 35%;
-    left: 50%;        
-    transform: translate(-50%, -50%)
+
+.modal.active {
+    opacity: 1;
+    z-index: 30;
 }
+
+.modal_content {    
+    display: flex;
+    padding: 5vw;
+    width: 85%; 
+    height: 90%;
+    border-radius: 1vw;
+    overflow-y: auto;    
+    background-color: #4b636e;
+    color: #a7c0cd;
+    border: 3px solid #a7c0cd;
+}
+
+.modal i {    
+    color: rgba(0, 0, 0, 0.6);    
+    transition: all .5s;
+    margin: 0 8px;
+}
+
+.modal i:hover {
+    color: rgb(0, 0, 0);
+    transform: scale(1.5);
+}
+
 </style>
