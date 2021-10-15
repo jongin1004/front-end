@@ -10,7 +10,7 @@
     <div class="content">
         <div>해외입국자 조치현황</div>
         <div class="search">
-            <input class="searchText" type="text" name="search" @keyup.enter="getData(search.trim())" v-model="search" placeholder="국가이름을 검색해보세요.">
+            <input class="searchText" type="text" name="search" @keyup.enter="searchCountry(search)" v-model="search" placeholder="국가이름을 검색해보세요.">
             <i class="fas fa-search"></i>
         </div>
 
@@ -22,7 +22,7 @@
             >                
                 {{ country.country_han }}
             </div>                                  
-        </div>     
+        </div>   
 
         <!-- Paginate -->
         <div class="pagination">
@@ -39,25 +39,26 @@ export default {
         pagination,
     },
 
-    data() {
+    data() {        
         return {
             search: '',
             iso_code: '',
             data: '',
             modalBool: false,
             detailContent: '',
-            countries: '', 
-            pageInfo: '',      
-
+            countries: '',            
+            pageInfo: '',
+            countryAll: '',                  
         }
     },
 
-    created() {
-        // axios.get('api/getCountry').then(res => {
-        //     this.countries = res.data.countries;            
-        // })
+    created() {                
+        axios.get('api/allCountry').then(res => {            
+            this.countryAll = res.data.countries;
+            console.log(res.data.countries);
+        });
 
-        this.getCountry();
+        this.getCountry();        
     },
 
     methods: {
@@ -68,6 +69,15 @@ export default {
                 this.pageInfo = res.data.countries;
                 this.countries = res.data.countries.data;                
             });
+        },
+
+        searchCountry(search) {
+            this.countries = [];
+            for (let i = 0; i < this.countryAll.length; i++) {
+                if (this.countryAll[i].country_han === search) {
+                    this.countries.push(this.countryAll[i]); 
+                }
+            }
         },
 
         showDetail(country_name, iso_code) {
