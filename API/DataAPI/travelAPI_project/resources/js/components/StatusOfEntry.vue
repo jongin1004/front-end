@@ -76,6 +76,8 @@ export default {
                     this.countries.push(this.countryAll[i]); 
                 }
             }
+
+            this.search = '';
         },
 
         showDetail(country_name, iso_code) {

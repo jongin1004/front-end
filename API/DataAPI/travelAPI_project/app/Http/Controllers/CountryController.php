@@ -36,7 +36,16 @@ class CountryController extends Controller
 
     public function getData() 
     {
-        $countries = Country::paginate(10);
+        $countries = Country::paginate(7);
+
+        return response()->json([
+            'countries' => $countries,
+        ], 200);
+    }
+
+    public function allData() 
+    {
+        $countries = Country::get();
 
         return response()->json([
             'countries' => $countries,
