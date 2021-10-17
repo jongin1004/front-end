@@ -233,7 +233,7 @@ li {
     box-sizing: border-box;
     padding: 0 10px;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 4px;
 }
 
@@ -245,7 +245,7 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 0;
+    height: 65px;
     overflow: hidden;
     transition: all 0.5s;
 }
@@ -255,10 +255,10 @@ li {
     flex-direction: column;    
 }
 
-.aboutMe .info .con.active {
+/* .aboutMe .info .con.active {
     height: 65px;
     padding: 10px;
-}
+} */
 
 .persnal_info {
     text-align: center;
