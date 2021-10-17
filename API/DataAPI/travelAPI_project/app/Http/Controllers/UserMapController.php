@@ -15,12 +15,17 @@ class UserMapController extends Controller
             'lng' => 'required'
         ]);  
 
-        // $map = []; 
-        // $map['description'] = $request['description'];
-        // $map['lat'] = $request['lat'];
-        // $map['lng'] = $request['lng'];
         UserMap::create($validated);
         
         return redirect()->back();
+    }
+
+    public function getUserMap()
+    {
+        $userMapDatas = UserMap::get();
+
+        return response()->json([
+            'userMapDatas' => $userMapDatas
+        ], 200);
     }
 }

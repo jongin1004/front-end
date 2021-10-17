@@ -3,8 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
-use App\Http\Controllers\ToDoListController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\UserMapController;
+use App\Http\Controllers\ToDoListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/getCountry', [CountryController::class, 'getData']);
 
 Route::get('/allCountry', [CountryController::class, 'allData']);
+
+Route::get('/getUserMap', [UserMapController::class, 'getUserMap']);

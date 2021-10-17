@@ -1,5 +1,5 @@
 <template>    
-    <button class="mapBtn" @click="initMap">지도보기</button>            
+    <button class="mapBtn" @click="initMap">지도보기</button>        
     <div id="map"></div>
 </template>
 
@@ -7,14 +7,15 @@
 export default {
     data() {
         return {
-            map: null,
-            myLatlng: { lat: 37.68, lng: 127.75 },
+            userMapDatas: '',    
         }
     },
 
-    // created() {        
-    //     this.initMap();
-    // },
+    created() {        
+        axios.get('api/getUserMap').then(res => {         
+            this.userMapDatas = res.data.userMapDatas;
+        });
+    },
 
     methods: {
         initMap() {
@@ -24,14 +25,6 @@ export default {
                 center: myLatlng,
                 zoom: 15,    
             });
-        
-
-            // Create the initial InfoWindow.
-            // let infoWindow = new google.maps.InfoWindow({
-            //   content: "Click the map to get Lat/Lng!",
-            //   position: myLatlng,
-            // });
-            // infoWindow.open(map);
 
             let infoWindow = new google.maps.InfoWindow({    
                 maxWidth: 200,
@@ -66,23 +59,10 @@ export default {
                 console.log(Latlng);
             });
 
-            let markLatlng = [
-                { lat: 37.68507190212072, lng: 127.75659465746138 },
-                { lat: 37.682728454890174, lng: 127.74071598009321 },
-                { lat: 37.67617320208278, lng: 127.75698089555952 },
-            ];
-
-            let message = [
-                "마크1",
-                "마크2",
-                "마크3"
-            ];
-
-            for (let i = 0; i < markLatlng.length; i++) {
+            for (let i = 0; i < this.userMapDatas.length; i++) {
                 let marker = new google.maps.Marker({
-                    position: markLatlng[i],
-                    map,
-                    title: "Uluru (Ayers Rock)",
+                    position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
+                    map,                    
                 });
 
                 marker.addListener("click", () => {
@@ -90,7 +70,7 @@ export default {
                     infoWindow2.close();
 
                     infoWindow2.setContent(
-                        message[i]
+                        this.userMapDatas[i]['description']
                     );
 
                     infoWindow2.open({
