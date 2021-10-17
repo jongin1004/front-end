@@ -18,6 +18,8 @@
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         {{-- google fonts --}}
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+        {{-- google map api --}}
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8nlhkTRE7zQLu2Q0ISEGwr9Budhk3syo" async></script>
     </head>
     <body class="h-screen">          
         <div id="app">

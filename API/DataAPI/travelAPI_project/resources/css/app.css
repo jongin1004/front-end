@@ -142,3 +142,19 @@
     font-size: 8px;
     padding: 4px;
 }
+
+/* Google Map */
+.map_box {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+.mapBtn {
+    position: absolute; 
+    top: 70px;
+}
+
+#map {
+    height: 70%;
+    width:100%;    
+}
