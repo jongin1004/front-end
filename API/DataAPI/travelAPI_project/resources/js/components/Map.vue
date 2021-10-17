@@ -1,5 +1,4 @@
-<template>    
-    <button class="mapBtn" @click="initMap">지도보기</button>        
+<template>         
     <div id="map"></div>
 </template>
 
@@ -14,6 +13,7 @@ export default {
     created() {        
         axios.get('api/getUserMap').then(res => {         
             this.userMapDatas = res.data.userMapDatas;
+            this.initMap();
         });
     },
 
