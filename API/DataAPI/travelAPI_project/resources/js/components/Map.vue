@@ -54,8 +54,8 @@ export default {
                 });
 
                 infoWindow.setContent(
-                    "<form action='/saveMap' method='post'>" +
-                    "<input type='text' name='title' placeholder='간단한 메모를 적으세요.'></input>" + 
+                    "<form action='/saveMap' method='POST'>" +                    
+                    "<input type='text' name='description' placeholder='간단한 메모를 적으세요.'></input>" +                     
                     "<input type='hidden' name='lat' value="+ Latlng.lat.toString() + "></input>" +
                     "<input type='hidden' name='lng' value="+ Latlng.lng.toString() + "></input>" +
                     "<input type='submit' />" +
