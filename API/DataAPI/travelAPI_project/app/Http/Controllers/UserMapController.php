@@ -13,11 +13,14 @@ class UserMapController extends Controller
             'description' => 'required',
             'lat' => 'required',
             'lng' => 'required'
-        ]);  
-
-        UserMap::create($validated);
+        ]);
         
-        return redirect()->back();
+        $MapDatas = UserMap::where('lat', $request['lat'])->where('lng', $request['lng'])->get();
+        if (count($MapDatas) == 0) {
+            UserMap::create($validated);
+        };
+
+        return view('welcome');
     }
 
     public function getUserMap()

@@ -20,10 +20,10 @@ export default {
     methods: {
         initMap() {
             let map;            
-            let myLatlng = { lat: 37.68, lng: 127.75 };
+            let myLatlng = this.userMapDatas[0] !== undefined ? { lat: this.userMapDatas[0]['lat'], lng: this.userMapDatas[0]['lng']} : { lat: 0, lng: 0 };
             map = new google.maps.Map(document.querySelector("#map"), {
                 center: myLatlng,
-                zoom: 15,    
+                zoom:  this.userMapDatas[0] !== undefined ? 15 : 1,
             });
 
             let infoWindow = new google.maps.InfoWindow({    
