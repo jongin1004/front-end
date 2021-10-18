@@ -59,8 +59,7 @@ export default {
                 fetch(url)
                 .then(res => res.json())
                 .then(myJson => {
-                    this.weatherData = myJson;
-                    console.log(myJson.weather[0].main);
+                    this.weatherData = myJson;                    
                 })
                 // Close the current InfoWindow.
                 weatherInfo.close();

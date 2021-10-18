@@ -158,3 +158,25 @@
     height: 70%;
     width:80%;    
 }
+
+.Marker {
+    position: absolute;
+    top: 50px;
+    padding: 4px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    background-color: #8bf6ff;
+    font-size: 8px;
+    cursor: pointer;  
+}
+
+.Marker:hover {
+    /* color: white; */
+    background-color: #0093c4;
+}
+
+@media screen and (max-width: 768px) {
+    #map {
+        width: 100%;
+    }
+}
