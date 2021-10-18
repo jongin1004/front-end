@@ -26,7 +26,7 @@
             @yield('content')      
         </div>        
         <script src="{{ asset('js/app.js') }}"></script>
-        <script>
+        <script>            
             function test() {
                 document.querySelector(".modal").classList.add("active");
             };

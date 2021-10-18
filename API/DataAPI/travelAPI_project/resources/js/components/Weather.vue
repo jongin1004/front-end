@@ -40,7 +40,7 @@ export default {
             let makerInfo = new google.maps.InfoWindow({          
                 maxWidth: 200,
                 });  
-
+            
             document.querySelector(".Marker").addEventListener("click", () => {                
                 this.showMarker(map, weatherInfo, makerInfo, markers);
                 this.markerBool = !this.markerBool;
@@ -72,17 +72,30 @@ export default {
                 weatherInfo = new google.maps.InfoWindow({
                     position: mapsMouseEvent.latLng,
                 });
-
-                weatherInfo.setContent(
-                    "<div>선택된 지역의 현재 날씨</div>" +
-                    "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
-                    "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
-                    "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
-                    "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
-                    "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
-                    "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
-                );
-                weatherInfo.open(map);                                
+                
+                setTimeout(() => {
+                    weatherInfo.setContent(
+                        "<div>선택된 지역의 현재 날씨</div>" +
+                        "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
+                        "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
+                        "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
+                        "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
+                        "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
+                        "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
+                    );
+                    weatherInfo.open(map);  
+                
+                }, 250);       
+                // weatherInfo.setContent(
+                //     "<div>선택된 지역의 현재 날씨</div>" +
+                //     "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
+                //     "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
+                //     "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
+                //     "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
+                //     "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
+                //     "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
+                // );
+                // weatherInfo.open(map);                                
             });
         },
         
