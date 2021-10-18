@@ -1,11 +1,4 @@
 <template>  
-    <!-- modal -->
-    <!-- <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
-        <div class="modal_content">
-            <div>ㅇㅇㅇㅇㅇㅇㅇㅇ</div>
-        </div>
-    </div> -->
-    <div @click="getWeather">날씨</div>
     <div id="map"></div>
 </template>
 
@@ -66,16 +59,14 @@ export default {
 
                 infoWindow.setContent(
                     "<div>선택된 지역의 현재 날씨</div>" +
-                    "<p style='display: flex; align-items: center;'><span>날씨 </span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
+                    "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
                     "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
                     "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
                     "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
                     "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
                     "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
                 );
-                infoWindow.open(map);
-                
-                console.log(Latlng);
+                infoWindow.open(map);                                
             });
 
             for (let i = 0; i < this.userMapDatas.length; i++) {
@@ -100,10 +91,6 @@ export default {
                     });
                 });
             }
-        },
-
-        closeModal() {                
-            this.modalBool = false;
         },
     }
 }

@@ -20,7 +20,7 @@ class UserMapController extends Controller
             UserMap::create($validated);
         };
 
-        return view('welcome');
+        return redirect()->back();
     }
 
     public function getUserMap()

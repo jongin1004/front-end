@@ -1,10 +1,10 @@
 <template>  
     <!-- modal -->
-    <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
+    <!-- <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
         <div class="modal_content">
             <div>ㅇㅇㅇㅇㅇㅇㅇㅇ</div>
         </div>
-    </div>
+    </div> -->
 
     <div id="map"></div>
 </template>
@@ -78,8 +78,7 @@ export default {
                     infoWindow2.close();
 
                     infoWindow2.setContent(
-                        "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>" + 
-                        "<div>날씨보기</div>"
+                        "<strong>" + this.userMapDatas[i]['description'] + "</strong>"                        
                     );
 
                     infoWindow2.open({

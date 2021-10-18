@@ -9,7 +9,7 @@
     <!-- 해외입국자 조치현황 -->
     <StatusOfEntry v-else-if="categoryState === '해외입국자 조치현황'" />
     <!-- 구글 API -->
-    <Map v-else-if="categoryState === '지도'" />
+    <!-- <Map v-else-if="categoryState === '지도'" /> -->
     <!-- 날씨 API -->
     <Weather v-else-if="categoryState === '날씨'" />
 </template>
@@ -52,6 +52,11 @@ export default {
 
     methods: {
         changeCategory(category) {
+            if (category === '지도') {
+                window.location="/map";
+                return;
+            }
+
             this.categoryState = category;
         }
     }
