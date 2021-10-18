@@ -28,15 +28,22 @@ export default {
                 zoom:  this.userMapDatas[0] !== undefined ? 15 : 1,
             });
 
-            let infoWindow = new google.maps.InfoWindow({    
+            let weatherInfo = new google.maps.InfoWindow({    
                 maxWidth: 100,
                 maxHeight: 100,
             });  
 
-            let infoWindow2 = new google.maps.InfoWindow({          
+            let makerInfo = new google.maps.InfoWindow({          
                 maxWidth: 200,
                 });  
 
+            // Configure the click listener.
+            this.showWeather(map, weatherInfo, makerInfo);
+
+            this.showMarker(map, weatherInfo, makerInfo);
+        },
+
+        showWeather(map, weatherInfo, makerInfo) {
             // Configure the click listener.
             map.addListener("click", (mapsMouseEvent) => {
                 let Latlng = JSON.parse(JSON.stringify(mapsMouseEvent.latLng));
@@ -49,15 +56,15 @@ export default {
                     console.log(myJson.weather[0].main);
                 })
                 // Close the current InfoWindow.
-                infoWindow.close();
-                infoWindow2.close();
+                weatherInfo.close();
+                makerInfo.close();
 
                 // Create a new InfoWindow.
-                infoWindow = new google.maps.InfoWindow({
+                weatherInfo = new google.maps.InfoWindow({
                     position: mapsMouseEvent.latLng,
                 });
 
-                infoWindow.setContent(
+                weatherInfo.setContent(
                     "<div>선택된 지역의 현재 날씨</div>" +
                     "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
                     "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
@@ -66,9 +73,11 @@ export default {
                     "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
                     "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
                 );
-                infoWindow.open(map);                                
+                weatherInfo.open(map);                                
             });
+        },
 
+        showMarker(map, weatherInfo, makerInfo) {
             for (let i = 0; i < this.userMapDatas.length; i++) {
                 let marker = new google.maps.Marker({
                     position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
@@ -76,22 +85,21 @@ export default {
                 });
 
                 marker.addListener("click", () => {
-                    infoWindow.close();
-                    infoWindow2.close();
+                    weatherInfo.close();
+                    makerInfo.close();
 
-                    infoWindow2.setContent(
-                        "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>" + 
-                        "<div>날씨보기</div>"
+                    makerInfo.setContent(
+                        "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
                     );
 
-                    infoWindow2.open({
+                    makerInfo.open({
                         anchor: marker,
                         map,
                         shouldFocus: false,
                     });
                 });
             }
-        },
+        }
     }
 }
 </script>
