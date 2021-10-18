@@ -1,4 +1,5 @@
-<template>  
+<template>     
+    <div class="Marker">{{ markerBool === false ? "marker표시" : "marker숨기기" }}</div>    
     <div id="map"></div>
 </template>
 
@@ -8,7 +9,8 @@ export default {
         return {
             userMapDatas: '', 
             modalBool: true,
-            weatherData: '',  
+            weatherData: '', 
+            markerBool: false,        
         }
     },
 
@@ -21,8 +23,10 @@ export default {
 
     methods: {
         initMap() {
-            let map;            
+            let map;
+            let markers = new Array(this.userMapDatas.length).fill(0);            
             let myLatlng = this.userMapDatas[0] !== undefined ? { lat: this.userMapDatas[0]['lat'], lng: this.userMapDatas[0]['lng']} : { lat: 0, lng: 0 };
+            
             map = new google.maps.Map(document.querySelector("#map"), {
                 center: myLatlng,
                 zoom:  this.userMapDatas[0] !== undefined ? 15 : 1,
@@ -37,11 +41,16 @@ export default {
                 maxWidth: 200,
                 });  
 
-            // Configure the click listener.
-            this.showWeather(map, weatherInfo, makerInfo);
+            document.querySelector(".Marker").addEventListener("click", () => {                
+                this.showMarker(map, weatherInfo, makerInfo, markers);
+                this.markerBool = !this.markerBool;
+            });            
 
-            this.showMarker(map, weatherInfo, makerInfo);
+            // Configure the click listener.
+            this.showWeather(map, weatherInfo, makerInfo);            
         },
+
+       
 
         showWeather(map, weatherInfo, makerInfo) {
             // Configure the click listener.
@@ -76,30 +85,67 @@ export default {
                 weatherInfo.open(map);                                
             });
         },
+        
+        showMarker(map, weatherInfo, makerInfo, markers) {      
+            if ( this.markerBool === true) {
+                this.clearMarkers(markers);
+            } else {                
+                for (let i = 0; i < this.userMapDatas.length; i++) {
+                    setTimeout(() => {
+                        markers[i] = new google.maps.Marker({
+                            position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
+                            map,
+                            animation: google.maps.Animation.DROP,
+                        });
+                        
+                        markers[i].addListener("click", () => {
+                            weatherInfo.close();
+                            makerInfo.close();
 
-        showMarker(map, weatherInfo, makerInfo) {
+                            makerInfo.setContent(
+                                "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
+                            );
+
+                            makerInfo.open({
+                                anchor: markers[i],
+                                map,
+                                shouldFocus: false,                        
+                            });
+                        }); 
+                    }, i * 100);                                 
+                }
+            }            
+        }, 
+        
+        drop() {
+            this.clearMarkers();
+
             for (let i = 0; i < this.userMapDatas.length; i++) {
-                let marker = new google.maps.Marker({
-                    position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
-                    map,                    
-                });
-
-                marker.addListener("click", () => {
-                    weatherInfo.close();
-                    makerInfo.close();
-
-                    makerInfo.setContent(
-                        "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
-                    );
-
-                    makerInfo.open({
-                        anchor: marker,
-                        map,
-                        shouldFocus: false,
-                    });
-                });
+                this.addMarkerWithTimeout({ lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng']}, i * 200);
             }
-        }
+        },
+
+        addMarkerWithTimeout(position, timeout, markers) {
+            setTimeout(() => {
+                markers.push(
+                    new google.maps.Marker({
+                        position: position,
+                        map,
+                        // animation: google.maps.Animation.DROP,
+                    })
+                );
+            }, timeout);
+            console.log(markers);
+        },
+
+        clearMarkers(markers) {
+            for (let i = 0; i < markers.length; i++) {
+                if (markers[i] !== 0) {
+                    markers[i].setMap(null);
+                }
+            }
+            markers = new Array(this.userMapDatas.length).fill(0);
+        },
     }
 }
 </script>
