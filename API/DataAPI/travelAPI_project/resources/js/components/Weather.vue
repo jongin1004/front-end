@@ -1,11 +1,11 @@
 <template>  
     <!-- modal -->
-    <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
+    <!-- <div class="modal" v-bind:class="{ active : modalBool }" @click="closeModal">
         <div class="modal_content">
             <div>ㅇㅇㅇㅇㅇㅇㅇㅇ</div>
         </div>
-    </div>
-
+    </div> -->
+    <div @click="getWeather">날씨</div>
     <div id="map"></div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
     data() {
         return {
             userMapDatas: '', 
-            modalBool: true,   
+            modalBool: true,
+            weatherData: '',  
         }
     },
 
@@ -35,7 +36,8 @@ export default {
             });
 
             let infoWindow = new google.maps.InfoWindow({    
-                maxWidth: 200,
+                maxWidth: 100,
+                maxHeight: 100,
             });  
 
             let infoWindow2 = new google.maps.InfoWindow({          
@@ -45,6 +47,14 @@ export default {
             // Configure the click listener.
             map.addListener("click", (mapsMouseEvent) => {
                 let Latlng = JSON.parse(JSON.stringify(mapsMouseEvent.latLng));
+                let url = `https://api.openweathermap.org/data/2.5/weather?lat=${Latlng.lat}&lon=${Latlng.lng}&appid=05086922b6ef740c6cf24a77cf9627be&units=metric`;
+
+                fetch(url)
+                .then(res => res.json())
+                .then(myJson => {
+                    this.weatherData = myJson;
+                    console.log(myJson.weather[0].main);
+                })
                 // Close the current InfoWindow.
                 infoWindow.close();
                 infoWindow2.close();
@@ -55,12 +65,13 @@ export default {
                 });
 
                 infoWindow.setContent(
-                    "<form action='/saveMap' method='POST'>" +                    
-                    "<input type='text' name='description' placeholder='간단한 메모를 적으세요.'></input>" +                     
-                    "<input type='hidden' name='lat' value="+ Latlng.lat.toString() + "></input>" +
-                    "<input type='hidden' name='lng' value="+ Latlng.lng.toString() + "></input>" +
-                    "<input type='submit' />" +
-                    "</form>"
+                    "<div>선택된 지역의 현재 날씨</div>" +
+                    "<p style='display: flex; align-items: center;'><span>날씨 </span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
+                    "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
+                    "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
+                    "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
+                    "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
+                    "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
                 );
                 infoWindow.open(map);
                 
@@ -93,7 +104,7 @@ export default {
 
         closeModal() {                
             this.modalBool = false;
-        }
+        },
     }
 }
 </script>

@@ -10,21 +10,31 @@
     <StatusOfEntry v-else-if="categoryState === '해외입국자 조치현황'" />
     <!-- 구글 API -->
     <Map v-else-if="categoryState === '지도'" />
+    <!-- 날씨 API -->
+    <Weather v-else-if="categoryState === '날씨'" />
 </template>
 
 <script>
 import Covid from './Covid.vue'
 import StatusOfEntry from './StatusOfEntry.vue'
 import Map from './Map.vue'
+import Weather from './Weather.vue'
 
 export default {
     components: {
         Covid,
         StatusOfEntry,
         Map,
+        Weather,
     },
 
     data() {
+        // const happyNewYear = new Date(); 
+        // const year = happyNewYear.getFullYear(); 
+        // const month = happyNewYear.getMonth() + 1;
+        // const date = happyNewYear.getDate(); 
+        // const weatherDate = `${year}-${month >= 10 ? month : '0' + month}-${date >= 10 ? date : '0' + date}`;
+
         return {
             menus: [
                 "공지사항",
@@ -35,6 +45,8 @@ export default {
                 "입국허가"
             ],
             categoryState: 'main',
+
+            date: new Date("YYYY-MM-DD"),
         }
     },
 
