@@ -50,8 +50,6 @@ export default {
             this.showWeather(map, weatherInfo, makerInfo);            
         },
 
-       
-
         showWeather(map, weatherInfo, makerInfo) {
             // Configure the click listener.
             map.addListener("click", (mapsMouseEvent) => {
@@ -85,70 +83,43 @@ export default {
                     );
                     weatherInfo.open(map);  
                 
-                }, 250);       
-                // weatherInfo.setContent(
-                //     "<div>선택된 지역의 현재 날씨</div>" +
-                //     "<p style='display: flex; align-items: center;'><span>" + this.weatherData.weather[0].main +"</span><img src='http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png' style='width: 30px;'></p>" + 
-                //     "<div> 평균온도 :" + this.weatherData.main.temp + "</div>" +
-                //     "<div> 체감온도 :" + this.weatherData.main.feels_like + "</div>" +
-                //     "<div> 최저온도 :" + this.weatherData.main.temp_min + "</div>" +
-                //     "<div> 최고온도 :" + this.weatherData.main.temp_max + "</div>" +
-                //     "<div> 바람 :" + this.weatherData.wind.speed + "</div>"
-                // );
-                // weatherInfo.open(map);                                
+                }, 300);                                  
             });
         },
         
         showMarker(map, weatherInfo, makerInfo, markers) {      
             if ( this.markerBool === true) {
                 this.clearMarkers(markers);
-            } else {                
-                for (let i = 0; i < this.userMapDatas.length; i++) {
-                    setTimeout(() => {
-                        markers[i] = new google.maps.Marker({
-                            position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
-                            map,
-                            animation: google.maps.Animation.DROP,
-                        });
-                        
-                        markers[i].addListener("click", () => {
-                            weatherInfo.close();
-                            makerInfo.close();
-
-                            makerInfo.setContent(
-                                "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
-                            );
-
-                            makerInfo.open({
-                                anchor: markers[i],
-                                map,
-                                shouldFocus: false,                        
-                            });
-                        }); 
-                    }, i * 100);                                 
-                }
+            } else {
+                this.addMarkerWithTimeout(map, markers, weatherInfo, makerInfo);               
             }            
         }, 
-        
-        drop() {
-            this.clearMarkers();
 
+        addMarkerWithTimeout(map, markers, weatherInfo, makerInfo) {
             for (let i = 0; i < this.userMapDatas.length; i++) {
-                this.addMarkerWithTimeout({ lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng']}, i * 200);
-            }
-        },
-
-        addMarkerWithTimeout(position, timeout, markers) {
-            setTimeout(() => {
-                markers.push(
-                    new google.maps.Marker({
-                        position: position,
+                setTimeout(() => {
+                    markers[i] = new google.maps.Marker({
+                        position: { lat: this.userMapDatas[i]['lat'], lng: this.userMapDatas[i]['lng'] },
                         map,
-                        // animation: google.maps.Animation.DROP,
-                    })
-                );
-            }, timeout);
-            console.log(markers);
+                        animation: google.maps.Animation.DROP,
+                    });
+                    
+                    markers[i].addListener("click", () => {
+                        weatherInfo.close();
+                        makerInfo.close();
+
+                        makerInfo.setContent(
+                            "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
+                        );
+
+                        makerInfo.open({
+                            anchor: markers[i],
+                            map,
+                            shouldFocus: false,                        
+                        });
+                    });
+                }, i * 100); 
+            }                       
         },
 
         clearMarkers(markers) {
