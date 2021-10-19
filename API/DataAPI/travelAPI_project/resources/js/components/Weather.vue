@@ -1,5 +1,5 @@
 <template>     
-    <div class="Marker">{{ markerBool === false ? "marker표시" : "marker숨기기" }}</div>    
+    <div class="Marker">{{ markerBool === false ? "marker표시" : "marker숨기기" }}</div>
     <div id="map"></div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
             userMapDatas: '', 
             modalBool: true,
             weatherData: '', 
-            markerBool: false,        
+            markerBool: false,  
         }
     },
 
@@ -24,7 +24,7 @@ export default {
     methods: {
         initMap() {
             let map;
-            let markers = new Array(this.userMapDatas.length).fill(0);            
+            let markers = new Array(this.userMapDatas.length).fill(0);    
             let myLatlng = this.userMapDatas[0] !== undefined ? { lat: this.userMapDatas[0]['lat'], lng: this.userMapDatas[0]['lng']} : { lat: 0, lng: 0 };
             
             map = new google.maps.Map(document.querySelector("#map"), {
@@ -37,20 +37,20 @@ export default {
                 maxHeight: 100,
             });  
 
-            let makerInfo = new google.maps.InfoWindow({          
+            let markerInfo = new google.maps.InfoWindow({          
                 maxWidth: 200,
                 });  
             
             document.querySelector(".Marker").addEventListener("click", () => {                
-                this.showMarker(map, weatherInfo, makerInfo, markers);
+                this.showMarker(map, weatherInfo, markerInfo, markers);
                 this.markerBool = !this.markerBool;
             });            
 
             // Configure the click listener.
-            this.showWeather(map, weatherInfo, makerInfo);            
+            this.showWeather(map, weatherInfo, markerInfo);            
         },
 
-        showWeather(map, weatherInfo, makerInfo) {
+        showWeather(map, weatherInfo, markerInfo) {
             // Configure the click listener.
             map.addListener("click", (mapsMouseEvent) => {
                 let Latlng = JSON.parse(JSON.stringify(mapsMouseEvent.latLng));
@@ -63,7 +63,7 @@ export default {
                 })
                 // Close the current InfoWindow.
                 weatherInfo.close();
-                makerInfo.close();
+                markerInfo.close();
 
                 // Create a new InfoWindow.
                 weatherInfo = new google.maps.InfoWindow({
@@ -82,19 +82,19 @@ export default {
                     );
                     weatherInfo.open(map);  
                 
-                }, 300);                                  
+                }, 500);                                  
             });
         },
         
-        showMarker(map, weatherInfo, makerInfo, markers) {      
+        showMarker(map, weatherInfo, markerInfo, markers) {      
             if ( this.markerBool === true) {
                 this.clearMarkers(markers);
             } else {
-                this.addMarkerWithTimeout(map, markers, weatherInfo, makerInfo);               
+                this.addMarkerWithTimeout(map, markers, weatherInfo, markerInfo);               
             }            
         }, 
 
-        addMarkerWithTimeout(map, markers, weatherInfo, makerInfo) {
+        addMarkerWithTimeout(map, markers, weatherInfo, markerInfo) {
             for (let i = 0; i < this.userMapDatas.length; i++) {
                 setTimeout(() => {
                     markers[i] = new google.maps.Marker({
@@ -105,13 +105,13 @@ export default {
                     
                     markers[i].addListener("click", () => {
                         weatherInfo.close();
-                        makerInfo.close();
+                        markerInfo.close();
 
-                        makerInfo.setContent(
+                        markerInfo.setContent(
                             "<strong>" + this.userMapDatas[i]['description'] + "</strong><br>"                        
                         );
 
-                        makerInfo.open({
+                        markerInfo.open({
                             anchor: markers[i],
                             map,
                             shouldFocus: false,                        
